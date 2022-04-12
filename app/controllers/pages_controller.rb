@@ -5,5 +5,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @restaurant = current_user.restaurant
   end
 end
