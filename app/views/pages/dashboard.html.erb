@@ -1,1 +1,7 @@
 <h2>This is where the magic begins</h2>
+<% if @restaurant %>
+<%= @Restaurant.name %>
+<% else %>
+<%= 'You don\'t have a restaurant' %>
+<%= link_to 'Create a Restaurant', '#' %>
+<% end %>
