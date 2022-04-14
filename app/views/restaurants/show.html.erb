@@ -1,0 +1,6 @@
+<h1><%= @restaurant.name %></h1>
+<h2>Your workers</h2>
+<% @workers.each do |worker| %>
+  <p><%= worker.first_name %> <em><%= worker.last_name %></em><p>
+<% end %>
+<%= link_to 'Add Worker', new_restaurant_worker_path(@restaurant) %>

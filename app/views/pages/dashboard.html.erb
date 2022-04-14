@@ -1,7 +1,7 @@
 <h2>This is where the magic begins</h2>
 <% if @restaurant %>
-<%= @restaurant.name %>
+  <%= @restaurant.name %> - <%= link_to 'Manage workers', restaurant_path(@restaurant) %>
 <% else %>
-<%= 'You don\'t have a restaurant' %>
-<%= link_to 'Create a Restaurant', new_restaurant_path %>
+  <%= 'You don\'t have a restaurant' %>
+  <%= link_to 'Create a Restaurant', new_restaurant_path %>
 <% end %>

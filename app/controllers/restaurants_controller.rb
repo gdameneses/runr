@@ -5,6 +5,12 @@ class RestaurantsController < ApplicationController
     authorize @restaurant
   end
 
+  def show
+    @restaurant = current_user.restaurant
+    @workers = @restaurant.workers
+    authorize @restaurant
+  end
+
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user

@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
   # post '/restaurant', to: 'restaurants#create'
   # get '/restaurant/new', to: 'restaurants#new'
-  resources :restaurants, only: [:new, :create]
+  resources :restaurants, only: [:new, :create, :show] do
+    resources :workers, except: [:index]
+  end
 end
