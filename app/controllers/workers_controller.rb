@@ -6,6 +6,12 @@ class WorkersController < ApplicationController
     authorize @worker
   end
 
+  def edit
+    @worker = Worker.find(params[:id])
+    @restaurant = @worker.restaurant
+    authorize @worker
+  end
+
   def create
     @worker = Worker.new(worker_params)
     @worker.restaurant = current_user.restaurant
