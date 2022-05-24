@@ -20,6 +20,16 @@ class WorkersController < ApplicationController
     redirect_to restaurant_path(current_user.restaurant)
   end
 
+  def update
+    @worker = Worker.find(params[:id])
+    @worker.update(worker_params)
+    @worker.save
+    authorize @worker
+    redirect_to restaurant_path(current_user.restaurant)
+  end
+
+  private
+
   def worker_params
     params.require(:worker).permit(:first_name, :last_name)
   end
