@@ -13,4 +13,8 @@ class RestaurantPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def layout?
+    true
+  end
 end

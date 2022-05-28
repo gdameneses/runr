@@ -19,6 +19,13 @@ class RestaurantsController < ApplicationController
     redirect_to '/dashboard'
   end
 
+  def layout
+    @restaurant = current_user.restaurant
+    authorize @restaurant
+  end
+
+  private
+
   def restaurant_params
     params.require(:restaurant).permit(:name)
   end

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:new, :create, :show] do
     resources :workers, except: [:index]
   end
+
+  get '/restaurant/:restaurant_id/layout', to: 'restaurants#layout', as: 'restaurant_layout'
 end
