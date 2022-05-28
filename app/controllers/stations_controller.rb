@@ -11,8 +11,10 @@ class StationsController < ApplicationController
 
   def create
     @station = Station.new(station_params)
+    @station.restaurant = @restaurant
+    @station.save
     authorize @station
-    raise
+    redirect_to(restaurant_stations_path(@restaurant))
   end
 
   private

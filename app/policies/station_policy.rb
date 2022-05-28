@@ -6,7 +6,7 @@ class StationPolicy < ApplicationPolicy
     # end
 
     def resolve
-      scope.all
+      scope.where(restaurant_id: user.restaurant.id)
     end
   end
 
