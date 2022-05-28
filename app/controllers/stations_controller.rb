@@ -9,9 +9,19 @@ class StationsController < ApplicationController
     authorize @station
   end
 
+  def create
+    @station = Station.new(station_params)
+    authorize @station
+    raise
+  end
+
   private
 
   def get_restaurant
     @restaurant = current_user.restaurant
+  end
+
+  def station_params
+    params.require(:station).permit(:name)
   end
 end
