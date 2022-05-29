@@ -17,6 +17,26 @@ class StationsController < ApplicationController
     redirect_to(restaurant_stations_path(@restaurant))
   end
 
+  def edit
+    @station = Station.find(params[:id])
+    authorize @station
+  end
+
+  def update
+    @station = Station.find(params[:id])
+    @station.update(station_params)
+    @station.save
+    authorize @station
+    redirect_to(restaurant_stations_path(@restaurant))
+  end
+
+  def destroy
+    @station = Station.find(params[:id])
+    @station.destroy
+    authorize @station
+    redirect_to(restaurant_stations_path(@restaurant))
+  end
+
   private
 
   def get_restaurant

@@ -1,0 +1,5 @@
+<h2><%= @restaurant.name %></h2>
+<%= simple_form_for [@restaurant, @station] do |f| %>
+  <%= f.input :name %>
+  <%= f.submit %>
+<% end %>
