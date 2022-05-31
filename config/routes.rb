@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   # post '/restaurant', to: 'restaurants#create'
   # get '/restaurant/new', to: 'restaurants#new'
   resources :restaurants, only: [:new, :create, :show] do
-    resources :workers, except: [:index]
-    resources :stations
+    resources :workers
+    resources :stations, except: [:show]
   end
 
   # get '/restaurant/:restaurant_id/layout', to: 'restaurants#layout', as: 'restaurant_layout'
