@@ -29,6 +29,14 @@ class WorkersController < ApplicationController
     redirect_to restaurant_path(current_user.restaurant)
   end
 
+  def destroy
+    @worker = Worker.find(params[:id])
+    @worker.destroy
+    authorize @worker
+    redirect_to restaurant_workers_path(@restaurant)
+
+  end
+
   private
 
   def get_restaurant
