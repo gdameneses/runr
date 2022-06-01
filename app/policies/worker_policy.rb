@@ -15,6 +15,6 @@ class WorkerPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    record.restaurant.user == user
   end
 end

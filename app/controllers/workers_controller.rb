@@ -3,9 +3,14 @@ class WorkersController < ApplicationController
   def index
     @workers = policy_scope(Worker)
   end
+
   def new
     @worker = Worker.new()
     authorize @worker
+  end
+
+  def show
+    @worker = Worker.find(params[:id])
   end
 
   def edit
@@ -26,7 +31,7 @@ class WorkersController < ApplicationController
     @worker.update(worker_params)
     @worker.save
     authorize @worker
-    redirect_to restaurant_path(current_user.restaurant)
+    redirect_to restaurant_workers_path(@restaurant)
   end
 
   def destroy
