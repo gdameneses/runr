@@ -20,6 +20,20 @@ class SkillsController < ApplicationController
     end
   end
 
+  def edit
+    @skill = Skill.find(params[:id])
+    authorize @skill
+  end
+
+  def update
+    @skill = Skill.find(params[:id])
+    @skill.update(skill_params)
+    @worker = @skill.worker
+    @skill.save
+    authorize @skill
+    redirect_to worker_path(@worker)
+  end
+
   def destroy
     @skill = Skill.find(params[:id])
     @worker = @skill.worker
