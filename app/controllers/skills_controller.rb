@@ -1,13 +1,15 @@
 class SkillsController < ApplicationController
   before_action :get_restaurant
-  before_action :get_worker
+  # before_action :get_worker
 
   def new
     @skill = Skill.new()
+    @worker = get_worker
     authorize @skill
   end
 
   def create
+    @worker = get_worker
     @skill = Skill.new(skill_params)
     @skill.worker = @worker
     authorize @skill
@@ -18,6 +20,14 @@ class SkillsController < ApplicationController
     end
   end
 
+  def destroy
+    @skill = Skill.find(params[:id])
+    @worker = @skill.worker
+    @skill.destroy
+    authorize @skill
+    redirect_to worker_path(@worker)
+  end
+
   private
 
   def skill_params
@@ -25,7 +35,7 @@ class SkillsController < ApplicationController
 
   end
   def get_restaurant
-    @restaurant = Worker.find(params[:worker_id]).restaurant
+    @restaurant = current_user.restaurant
   end
 
   def get_worker
