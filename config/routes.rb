@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
   # post '/restaurant', to: 'restaurants#create'
   # get '/restaurant/new', to: 'restaurants#new'
-  resources :restaurants, only: [:new, :create, :show] do
-    resources :workers
-    resources :stations, except: [:show]
+  shallow do
+    resources :restaurants, only: [:new, :create, :show] do
+      resources :workers do
+        resources :skills
+      end
+      resources :stations, except: [:show]
+    end
   end
 
   # get '/restaurant/:restaurant_id/layout', to: 'restaurants#layout', as: 'restaurant_layout'

@@ -11,6 +11,7 @@ class WorkersController < ApplicationController
 
   def show
     @worker = Worker.find(params[:id])
+    authorize @worker
   end
 
   def edit
