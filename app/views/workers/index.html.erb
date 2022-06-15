@@ -1,6 +1,6 @@
 <h2><%= @restaurant.name %></h2>
 <% @workers.each do |worker| %>
-  <h4><%= worker.first_name %> <%= worker.last_name %> - <%= link_to 'Edit', edit_restaurant_worker_path(@restaurant, worker) %> - <%= link_to '🗑️', restaurant_worker_path(@restaurant, worker), method: :delete %> - <%= link_to 'Stations', restaurant_worker_path(@restaurant, worker) %></h4>
+  <h4><%= worker.first_name %> <%= worker.last_name %> - <%= link_to 'Edit', edit_worker_path(worker) %> - <%= link_to '🗑️', worker_path(worker), method: :delete %> - <%= link_to 'Stations', worker_path(worker) %></h4>
 <% end %>
 
 <%= link_to '+ Add Worker', new_restaurant_worker_path(@restaurant), class: 'btn btn-outline-primary' %>

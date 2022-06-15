@@ -6,6 +6,10 @@ class WorkerPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    destroy?
+  end
+
   def create?
     true
   end
