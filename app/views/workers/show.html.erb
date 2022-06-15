@@ -1,8 +1,8 @@
 <h2><%= @restaurant.name %></h2>
 <h3><%= @worker.first_name %> <%= @worker.last_name %></h3>
-Stations
+<h3>Stations</h3>
 <% @worker.skills.each do |skill| %>
-  <%= raise %>
+  <p>•<%= skill.station.name %> - <%= skill.level %>/5</p>
 <% end %>
 
-<%= link_to '+Add a skill', '#', class: 'btn btn-outline-warning' %>
+<%= link_to '+Add a skill', new_worker_skill_path(@worker), class: 'btn btn-outline-warning' %>
