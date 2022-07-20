@@ -1,0 +1,6 @@
+<h2><%= @restaurant.name %></h2>
+<%= simple_form_for [@worker, @skill] do |f| %>
+  <%= f.association :station %>
+  <%= f.input :level %>
+  <%= f.submit %>
+<% end %>
