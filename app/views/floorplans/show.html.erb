@@ -2,6 +2,7 @@
 <div class="main-grid">
   <div class="row" id="1">
     <div class="card col" id="1">
+      <h5 class="card-title"><%= @stations.where(name: 'Kitchen Manager').first.name %></h5>
     </div>
     <div class="card col" id="2">
     </div>
@@ -12,21 +13,31 @@
     <div class="card col" id="5">
     </div>
     <div class="card col" id="6">
+      <h5 class="card-title"><%= @stations.where(name: 'Headset').first.name %></h5>
+
     </div>
   </div>
 
   <div class="row" id="2">
     <div class="card col" id="1">
+      <h5 class="card-title"><%= @stations.where(name: 'Backroom').first.name %></h5>
+      <div class="worker">
+        <h3 class="name">Juninho</h3>
+      </div>
     </div>
     <div class="card col" id="2">
     </div>
     <div class="card col" id="3">
+      <h5 class="card-title"><%= @stations.where(name: 'Initiator').first.name %></h5>
     </div>
     <div class="card col" id="4">
+      <h5 class="card-title"><%= @stations.where(name: 'Initiator').first.name %></h5>
     </div>
     <div class="card col" id="5">
     </div>
     <div class="card col" id="6">
+      <h5 class="card-title"><%= @stations.where(name: 'DT Cashier').first.name %></h5>
+
     </div>
   </div>
 
@@ -34,12 +45,16 @@
     <div class="card col" id="1">
     </div>
     <div class="card col" id="2">
+      <h5 class="card-title"><%= @stations.where(name: 'Grill').first.name %></h5>
     </div>
     <div class="card col" id="3">
+      <h5 class="card-title"><%= @stations.where(name: 'Dresser').first.name %></h5>
     </div>
     <div class="card col" id="4">
+      <h5 class="card-title"><%= @stations.where(name: 'Dresser').first.name %></h5>
     </div>
     <div class="card col" id="5">
+      <h5 class="card-title"><%= @stations.where(name: 'Chicken').first.name %></h5>
     </div>
     <div class="card col" id="6">
     </div>
@@ -49,12 +64,16 @@
     <div class="card col" id="1">
     </div>
     <div class="card col" id="2">
+      <h5 class="card-title"><%= @stations.where(name: 'Initiator').first.name %></h5>
     </div>
     <div class="card col" id="3">
+      <h5 class="card-title"><%= @stations.where(name: 'Finisher').first.name %></h5>
     </div>
     <div class="card col" id="4">
+      <h5 class="card-title"><%= @stations.where(name: 'Finisher').first.name %></h5>
     </div>
     <div class="card col" id="5">
+      <h5 class="card-title"><%= @stations.where(name: 'Fries').first.name %></h5>
     </div>
     <div class="card col" id="6">
     </div>
@@ -66,8 +85,10 @@
     <div class="card col" id="2">
     </div>
     <div class="card col" id="3">
+      <h5 class="card-title"><%= @stations.where(name: 'FC Runner').first.name %></h5>
     </div>
     <div class="card col" id="4">
+      <h5 class="card-title"><%= @stations.where(name: 'DT Runner').first.name %></h5>
     </div>
     <div class="card col" id="5">
     </div>
@@ -77,21 +98,29 @@
 
   <div class="row" id="6">
     <div class="card col" id="1">
+      <h5 class="card-title"><%= @stations.where(name: 'FC Drinks').first.name %></h5>
     </div>
     <div class="card col" id="2">
+      <h5 class="card-title"><%= @stations.where(name: 'FC Drinks').first.name %></h5>
     </div>
     <div class="card col" id="3">
+      <h5 class="card-title"><%= @stations.where(name: 'FC Checker').first.name %></h5>
+
     </div>
     <div class="card col" id="4">
     </div>
     <div class="card col" id="5">
+      <h5 class="card-title"><%= @stations.where(name: 'DT Checker').first.name %></h5>
     </div>
     <div class="card col" id="6">
+      <h5 class="card-title"><%= @stations.where(name: 'DT Presenter').first.name %></h5>
+
     </div>
   </div>
 
   <div class="row" id="7">
     <div class="card col" id="1">
+      <h5 class="card-title"><%= @stations.where(name: 'FC Drinks').first.name %></h5>
     </div>
     <div class="card col" id="2">
     </div>
@@ -109,12 +138,15 @@
     <div class="card col" id="1">
     </div>
     <div class="card col" id="2">
+      <h5 class="card-title"><%= @stations.where(name: 'FC Presenter').first.name %></h5>
     </div>
     <div class="card col" id="3">
+      <h5 class="card-title"><%= @stations.where(name: 'FC Presenter').first.name %></h5>
     </div>
     <div class="card col" id="4">
     </div>
     <div class="card col" id="5">
+      <h5 class="card-title"><%= @stations.where(name: 'DT Drinks').first.name %></h5>
     </div>
     <div class="card col" id="6">
     </div>
@@ -122,6 +154,7 @@
 
   <div class="row" id="9">
     <div class="card col" id="1">
+      <h5 class="card-title"><%= @stations.where(name: 'Maitre d\'').first.name %></h5>
     </div>
     <div class="card col" id="2">
     </div>
@@ -132,6 +165,8 @@
     <div class="card col" id="5">
     </div>
     <div class="card col" id="6">
+      <h5 class="card-title"><%= @stations.where(name: 'Headset').first.name %></h5>
+
     </div>
   </div>
 
@@ -139,10 +174,13 @@
     <div class="card col" id="1">
     </div>
     <div class="card col" id="2">
+      <h5 class="card-title"><%= @stations.where(name: 'Lobby').first.name %></h5>
     </div>
     <div class="card col" id="3">
+      <h5 class="card-title"><%= @stations.where(name: 'Lobby').first.name %></h5>
     </div>
     <div class="card col" id="4">
+      <h5 class="card-title"><%= @stations.where(name: 'Lobby').first.name %></h5>
     </div>
     <div class="card col" id="5">
     </div>

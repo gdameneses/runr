@@ -5,6 +5,7 @@ class FloorplansController < ApplicationController
 
   def show
     @floorplan = Floorplan.find(params[:id])
+    @stations = @floorplan.restaurant.stations
     authorize @floorplan
   end
 
