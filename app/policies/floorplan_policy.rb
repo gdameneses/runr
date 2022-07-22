@@ -5,4 +5,16 @@ class FloorplanPolicy < ApplicationPolicy
       scope.where(restaurant_id: user.restaurant.id)
     end
   end
+
+  def show?
+    true
+  end
+
+  def create?
+    true
+  end
+
+  def destroy?
+    true
+  end
 end
