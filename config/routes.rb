@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       end
       resources :stations, except: [:show]
       resources :floorplans
+      resources :reports
     end
   end
 

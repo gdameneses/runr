@@ -1,0 +1,9 @@
+<% if @reports.count == 0 %>
+  <h3>You have not uploaded a file yet.</h3>
+  <%= simple_form_for [@restaurant, @report] do |f| %>
+    <%= f.file_field :report %> <br>
+    <%= f.submit %>
+    <% end %>
+<% else %>
+  <h2>mais q 0</h2>
+<% end %>
