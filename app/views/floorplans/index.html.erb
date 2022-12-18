@@ -1,0 +1,5 @@
+<% @floorplans.each do |f| %>
+  <h4><%= link_to "Floorplan #{f.id}", floorplan_path(f) %> - <%= link_to '🗑️', floorplan_path(f), method: :delete %></h4>
+<% end %>
+
+<%= link_to '+ New', restaurant_floorplans_path, method: :create, class: 'btn btn-secondary' %>

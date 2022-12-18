@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         resources :skills
       end
       resources :stations, except: [:show]
+      resources :floorplans
     end
   end
 

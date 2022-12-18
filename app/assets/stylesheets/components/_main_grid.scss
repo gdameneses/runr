@@ -1,0 +1,23 @@
+
+.main-grid {
+  width: 90%;
+  margin: 0 auto;
+  box-shadow: 0 0 8px 2px grey;
+}
+.main-grid .col {
+  width: 100px;
+  height: 60px;
+  width: 100px;
+  height: 65px;
+  border-radius: 2%;
+  align-content: center;
+  justify-content: center;
+  transition: background-color 0.1s;
+}
+.main-grid .col:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.main-grid h5 {
+  font-size: 12px;
+}
