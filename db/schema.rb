@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_21_192543) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_12_27_172251) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,7 +19,7 @@ ActiveRecord::Schema.define(version: 2022_12_21_192543) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -32,8 +31,8 @@ ActiveRecord::Schema.define(version: 2022_12_21_192543) do
     t.text "metadata"
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.string "checksum"
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -45,14 +44,14 @@ ActiveRecord::Schema.define(version: 2022_12_21_192543) do
 
   create_table "floorplans", force: :cascade do |t|
     t.bigint "restaurant_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_floorplans_on_restaurant_id"
   end
 
   create_table "reports", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "restaurant_id", null: false
     t.text "data", default: [], array: true
     t.index ["restaurant_id"], name: "index_reports_on_restaurant_id"
@@ -61,8 +60,8 @@ ActiveRecord::Schema.define(version: 2022_12_21_192543) do
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 
@@ -70,16 +69,16 @@ ActiveRecord::Schema.define(version: 2022_12_21_192543) do
     t.bigint "worker_id", null: false
     t.bigint "station_id", null: false
     t.integer "level"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["station_id"], name: "index_skills_on_station_id"
     t.index ["worker_id"], name: "index_skills_on_worker_id"
   end
 
   create_table "stations", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "restaurant_id", null: false
     t.index ["restaurant_id"], name: "index_stations_on_restaurant_id"
   end
@@ -88,10 +87,10 @@ ActiveRecord::Schema.define(version: 2022_12_21_192543) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -100,8 +99,8 @@ ActiveRecord::Schema.define(version: 2022_12_21_192543) do
     t.string "first_name"
     t.string "last_name"
     t.bigint "restaurant_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_workers_on_restaurant_id"
   end
 
