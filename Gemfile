@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.5'
+gem 'rails', '~> 7.0.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
@@ -24,6 +24,8 @@ gem 'redis', '~> 4.0'
 
 gem 'csv'
 
+gem 'bootstrap'
+
 gem 'faker'
 
 gem 'pundit'
@@ -36,6 +38,10 @@ gem 'pundit'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
+
+gem 'cssbundling-rails'
+
+gem 'jsbundling-rails'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
