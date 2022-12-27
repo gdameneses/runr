@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   require 'csv'
-  before_action :set_restaurant, only: %i[index new create]
+  before_action :set_restaurant, only: %i[index new create destroy]
   def index
     @reports = policy_scope(Report)
     new unless @restaurant.report
@@ -30,6 +30,8 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
     @report.destroy
     authorize @report
+    redirect_to restaurant_reports_path(@restaurant)
+
   end
 
   private
