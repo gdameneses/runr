@@ -286,10 +286,7 @@ DEPENDENCIES
   bootstrap
   byebug
   capybara (>= 3.26)
-<<<<<<< HEAD
-=======
   cssbundling-rails
->>>>>>> master
   csv
   devise
   dotenv-rails
@@ -320,8 +317,4 @@ RUBY VERSION
    ruby 3.2.0p0
 
 BUNDLED WITH
-<<<<<<< HEAD
-   2.3.20
-=======
    2.4.1
->>>>>>> master
