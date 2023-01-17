@@ -1,20 +1,38 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<div class="container d-flex justify-content-center pt-5">
+  <div class="card card-login col-lg-5 col-10 justify-content-center p-5">
+  <div class="cart-title text-center mb-5">
+    <h1>RUNR</h1>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+  <div class="card-subtitle">
+  <h3>Welcome!</h3>
+  <h6 class="text-secondary mb-4">Sign to continue</h6>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <div class="form">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    placeholder: "your@email.com",
+                    label: false,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+        <%= f.input :password,
+                    placeholder: "P4ssW0rd$",
+                    label: false,
+                    required: false,
+                    input_html: { autocomplete: "current-password" } %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Log in", class: "btn btn-outline-primary col-12 mb-2" %>
+        <div class="text-secondary p-3">
+          <p class="text-center">Can't log in?</p>
+          <%= link_to "Sign up!", new_registration_path(resource_name), class: %><br />
+          <%= link_to "Forgot your password?", new_password_path(resource_name), class: %><br />
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
