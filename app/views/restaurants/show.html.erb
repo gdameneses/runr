@@ -1,3 +1,4 @@
+<%= render 'shared/navbar' %>
 <h2><%= @restaurant.name %></h2>
 <%= link_to 'Manage Layout', restaurant_stations_path(@restaurant), class: 'btn btn-secondary' %>
 <%= link_to 'Manage workers', restaurant_workers_path(@restaurant), class: 'btn btn-secondary' %>
