@@ -1,3 +1,4 @@
+<%= render 'shared/navbar' %>
 <h2>This is where the magic begins</h2>
 <% if @restaurant %>
   <%= @restaurant.name %> - <%= link_to 'Restaurant show page', restaurant_path(@restaurant) %>
