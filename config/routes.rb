@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # post '/restaurant', to: 'restaurants#create'
   # get '/restaurant/new', to: 'restaurants#new'
   shallow do
-    resources :restaurants, only: [:new, :create, :show] do
+    resources :restaurants, only: %i[new create show destroy] do
       resources :workers do
         resources :skills
       end

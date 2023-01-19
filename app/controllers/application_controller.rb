@@ -14,15 +14,9 @@ class ApplicationController < ActionController::Base
   # end
 
   private
-  def root
-    if current_user.present?
-      redirect_to dashboard_path
-    else
-      home
-    end
-  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
+
 end
