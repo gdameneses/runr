@@ -17,4 +17,8 @@ class RestaurantPolicy < ApplicationPolicy
   def layout?
     true
   end
+
+  def destroy?
+    true
+  end
 end
