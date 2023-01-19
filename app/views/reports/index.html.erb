@@ -1,0 +1,18 @@
+<% if @reports.count == 0 %>
+  <h3>You have not uploaded a file yet.</h3>
+  <%= simple_form_for [@restaurant, @report] do |f| %>
+    <%= f.file_field :file, accept: '.csv' %> <br>
+    <%= f.submit %>
+    <% end %>
+<% else %>
+<br>
+  <%= link_to 'Delete report', report_path(@restaurant.report), method: :delete %> <br> <br>
+  <h3>filtered</h3>
+    <% @restaurant.report.data.each do |row| %>
+      <%= row.to_h["shift_start_time"] %><br>
+    <% end %>
+  <h3>unfiltered</h3>
+  <% @restaurant.report.data.each do |row| %>
+      <h4><%= row[2][1] %></h4> <p><%= row[4][1] %></p>
+  <% end %>
+<% end %>
