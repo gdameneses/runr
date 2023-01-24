@@ -1,10 +1,33 @@
-<h2>Get running!</h2>
 <% if @restaurant %>
-  <%= @restaurant.name %> - <%= link_to 'Restaurant show page', restaurant_path(@restaurant) %>
-<% else %>
-    <div class="started-item active d-flex align-items-center mb-3 mt-3 ">
-      <div class="rounded-circle bg-dark text-light p-3 m-1">01</div>
-      <div><strong class="m-2">Create your restaurant</strong></div>
-      <%= link_to 'Create a Restaurant', new_restaurant_path, class: 'btn btn-primary m-2 rounded-pill ' %>
+  <section class="dashboard col-12 justify-between">
+    <h2>Let's run!</h2>
+    <div class="wrapper d-flex">
+      <div class="wrapper col-7">
+        <div class="dashboard-card card">
+          <div class="card-title">
+            <h3>Floorplan</h3>
+            <%= link_to 'Create new', '#', class: "btn btn-primary rounded-pill" %>
+          </div>
+        </div>
+        <div class="card dashboard-card report">
+          <h3 class="card-title">
+            Shift Report
+          </h3>
+        </div>
+      </div>
+      <div class="wrapper col-5">
+        <div class="dashboard-card card tasklist">
+          <h3 class="card-title">
+            To do...<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          </h3>
+        </div>
+      </div>
     </div>
+  </section>
+<% else %>
+  <div class="started-item active d-flex align-items-center mb-3 mt-3 ">
+    <div class="rounded-circle bg-dark text-light p-3 m-1">01</div>
+    <div><strong class="m-2">Create your restaurant</strong></div>
+    <%= link_to 'Create a Restaurant', new_restaurant_path, class: 'btn btn-primary m-2 rounded-pill ' %>
+  </div>
 <% end %>

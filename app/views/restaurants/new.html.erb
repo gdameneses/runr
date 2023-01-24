@@ -1,4 +1,13 @@
-<%= simple_form_for @restaurant do |f| %>
-<%= f.input 'name' %>
-<%= f.submit %>
-<% end %>
+<div class="container create-form col-12 col-lg-4 rounded border shadow p-4 mt-4 d-flex flex-column">
+  <h2 class="container-title mb-4 p-4">
+    Create your restaurant...
+  </h2>
+  <div class="form p-4 mb-5">
+    <%= simple_form_for @restaurant do |f| %>
+    <%= f.input 'name',
+                label: false,
+                placeholder: 'What\'s it called?' %>
+    <%= f.submit 'Do it!', class: 'btn btn-primary col-12 mt-5 fs-2 rounded-pill' %>
+    <% end %>
+  </div>
+</div>

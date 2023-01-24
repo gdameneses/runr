@@ -1,0 +1,15 @@
+.dashboard {
+  height: 100vh;
+}
+
+.dashboard-card {
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  padding: 2rem;
+  border: solid red;
+  .card-title{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    border-bottom: solid grey 1px;
+  }
+}
