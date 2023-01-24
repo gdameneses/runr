@@ -4,7 +4,7 @@
     <div class="nav-menu">
       <% if user_signed_in? %>
       <%= link_to "Dashboard", dashboard_path, class: 'm-2'%>
-      <%= link_to "Settings", restaurant_path(current_user.restaurant) if current_user.restaurant  %>
+      <%= link_to "Manage your restaurant", restaurant_path(current_user.restaurant) if current_user.restaurant  %>
       <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'm-2' %>
       <% else %>
       <%= link_to "Log in", new_user_session_path %>
