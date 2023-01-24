@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/dashboard', to: 'pages#dashboard'
-  # post '/restaurant', to: 'restaurants#create'
-  # get '/restaurant/new', to: 'restaurants#new'
+
   shallow do
     resources :restaurants, only: %i[new create show destroy] do
       resources :workers do
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
       resources :stations, except: [:show]
       resources :floorplans
       resources :reports
+      resources :notes, only: %i[new edit create update destroy]
     end
   end
 
