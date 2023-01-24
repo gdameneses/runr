@@ -5,14 +5,18 @@ class NotesController < ApplicationController
     @note.restaurant = @restaurant
     @note.save
     authorize @note
-    redirect_to dashboard_path
+    redirect_to '/dashboard/#notes'
   end
 
   def destroy
     @note = Note.find(params[:id])
-    @note.destroy
-    authorize @note
-    render 'pages/dashboard'
+    if @note
+      @note.destroy
+      authorize @note
+      redirect_to '/dashboard/#notes'
+    else
+      render(redirect_to '/dashboard/#notes')
+    end
   end
 
   private
