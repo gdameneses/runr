@@ -1,13 +1,21 @@
-<% if @reports.count == 0 %>
-  <h3>You have not uploaded a file yet.</h3>
-  <%= simple_form_for [@restaurant, @report] do |f| %>
-    <%= f.file_field :file, accept: '.csv' %> <br>
-    <%= f.submit %>
+<div class="page-title d-flex justify-content-between">
+  <h2>Shift Report</h2>
+    <button type="button" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      + Upload report
+    </button>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <% if @restaurant.report %>
+      <%= render 'new' %>
+    <% else %>
+      <%= render 'new2' %>
     <% end %>
-<% else %>
-<br>
-  <%= link_to 'Delete report', report_path(@restaurant.report), method: :delete %> <br> <br>
+  </div>
+</div>
   <h3>filtered</h3>
+  <% if @restaurant.report %>
+    <%= link_to 'Delete report', report_path(@restaurant.report), method: :delete %> <br>
     <% @restaurant.report.data.each do |row| %>
       <%= row.to_h["shift_start_time"] %><br>
     <% end %>
@@ -15,4 +23,4 @@
   <% @restaurant.report.data.each do |row| %>
       <h4><%= row[2][1] %></h4> <p><%= row[4][1] %></p>
   <% end %>
-<% end %>
+  <% end %>
