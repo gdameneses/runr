@@ -1,7 +1,7 @@
 <% if @restaurant %>
-  <section class="dashboard col-12 justify-between">
+  <section class="dashboard col-12 justify-between pt-2">
     <h2>Let's run!</h2>
-    <div class="wrapper d-flex">
+    <div class="wrapper d-flex h-100">
       <div class="wrapper col-7">
         <div class="dashboard-card card">
           <div class="card-header">
@@ -16,22 +16,31 @@
         </div>
       </div>
       <div class="wrapper col-5">
-        <div class="dashboard-card panel" id="notes">
+        <div class="dashboard-card panel h-100" id="notes">
           <div class="card-header text-center justify-content-center">
             <h3 class="card-title">
               Notes
             </h3>
           </div>
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
+            <% @restaurant.notes.each do |note| %>
+              <div class="card card-note m-2">
+                <h5><%= note.content %></h5>
+              </div>
+            <% end %>
+          </div>
+          <div class="card-footer">
             <button type="button" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
               +Add note
             </button>
+          </div>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <%= render 'notes/new' %>
               </div>
             </div>
-          </div>
+
+
         </div>
       </div>
     </div>
