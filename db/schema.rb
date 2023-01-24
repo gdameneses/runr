@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_27_172251) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_24_142629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_172251) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_floorplans_on_restaurant_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "content"
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_notes_on_restaurant_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -107,6 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_172251) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "floorplans", "restaurants"
+  add_foreign_key "notes", "restaurants"
   add_foreign_key "reports", "restaurants"
   add_foreign_key "restaurants", "users"
   add_foreign_key "skills", "stations"
