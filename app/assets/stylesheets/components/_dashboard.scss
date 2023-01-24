@@ -1,10 +1,14 @@
+.card {
+  padding: 0;
+}
+
 .dashboard {
   height: 100vh;
 }
 
 .dashboard-card {
   margin: 1rem 0.5rem 1rem 0.5rem;
-  padding: 1rem;
+  // padding: 1rem;
   border: solid red;
 
   .card-header{
