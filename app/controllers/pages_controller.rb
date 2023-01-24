@@ -7,5 +7,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @restaurant = current_user.restaurant
+    @note = Note.new()
   end
 end
