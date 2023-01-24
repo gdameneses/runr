@@ -15,7 +15,7 @@ class NotesController < ApplicationController
       authorize @note
       redirect_to '/dashboard/#notes'
     else
-      render(redirect_to '/dashboard/#notes')
+      redirect_to '/dashboard/#notes'
     end
   end
 
