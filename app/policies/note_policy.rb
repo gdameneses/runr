@@ -13,4 +13,8 @@ class NotePolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def destroy?
+    create?
+  end
 end
