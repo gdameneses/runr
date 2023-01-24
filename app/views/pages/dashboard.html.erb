@@ -4,22 +4,27 @@
     <div class="wrapper d-flex">
       <div class="wrapper col-7">
         <div class="dashboard-card card">
-          <div class="card-title">
+          <div class="card-header">
             <h3>Floorplan</h3>
             <%= link_to 'Create new', '#', class: "btn btn-primary rounded-pill" %>
           </div>
         </div>
         <div class="card dashboard-card report">
-          <h3 class="card-title">
+          <h3 class="card-header">
             Shift Report
           </h3>
         </div>
       </div>
       <div class="wrapper col-5">
-        <div class="dashboard-card card tasklist">
-          <h3 class="card-title">
-            To do...<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          </h3>
+        <div class="dashboard-card panel" id="notes">
+          <div class="card-header text-center justify-content-center">
+            <h3 class="card-title">
+              Notes
+            </h3>
+          </div>
+          <div class="card-body">
+            Insert looping here...
+          </div>
         </div>
       </div>
     </div>
