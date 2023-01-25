@@ -50,6 +50,6 @@ class WorkersController < ApplicationController
   end
 
   def worker_params
-    params.require(:worker).permit(:first_name, :last_name)
+    params.require(:worker).permit(:first_name, :last_name, :number)
   end
 end

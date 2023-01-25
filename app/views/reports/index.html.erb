@@ -38,13 +38,13 @@
         <div class="col"> </div>
         <div class="col-2"><button class="btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12">+ Add</button></div>
       </div>
-      <% @restaurant.report.data.each do |row| %>
+      <% @restaurant.report.shifts.each do |shift| %>
         <div class="row border text-center align-items-center p-1">
-          <div class="col text-start"><%= row[1][1] %></div>
-          <div class="col-4 text-start"><%= row[2][1] %></div>
+          <div class="col text-start"><%= shift.worker.number %></div>
+          <div class="col-4 text-start"><%= "#{shift.worker.first_name} #{shift.worker.last_name}" %></div>
           <div class="col"><input type="checkbox"></div>
-          <div class="col divisor"><%= row[4][1] %></div>
-          <div class="col"><%= row[5][1] %></div>
+          <div class="col divisor"><%= shift.start %></div>
+          <div class="col"><%= shift.finish %></div>
           <div class="col"><input type="checkbox"></div>
           <div class="col-2 d-flex align-items-center justify-content-between">
               <button class="btn btn-secondary col-8">Edit</button>
