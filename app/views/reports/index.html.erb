@@ -19,26 +19,25 @@
   </div>
 </div>
   <% if @restaurant.report %>
-
-    <div class="container">
-      <div class="row text-center border">
+    <div class="container report-table">
+      <div class="header row text-center border">
         <div class="col">ID</div>
         <div class="col col-4">Name</div>
         <div class="col">Break</div>
         <div class="col">Shift Start</div>
         <div class="col">Shift Ends</div>
         <div class="col">Missed</div>
-        <div class="col">Manage</div>
+        <div class="col-2">Manage</div>
       </div>
       <% @restaurant.report.data.each do |row| %>
         <div class="row border text-center align-items-center p-1">
           <div class="col text-start"><%= row[1][1] %></div>
           <div class="col-4 text-start"><%= row[2][1] %></div>
-          <div class="col">[  ]</div>
+          <div class="col"><input type="checkbox"></div>
           <div class="col"><%= row[4][1] %></div>
           <div class="col"><%= row[5][1] %></div>
-          <div class="col">[  ]</div>
-          <div class="col d-flex align-items-center justify-content-center">
+          <div class="col"><input type="checkbox"></div>
+          <div class="col-2 d-flex align-items-center justify-content-center">
             <div class="col"><button class="btn btn-secondary p-4 pt-0 pb-0 m-1 mt-0 mb-0">Edit</button></div>
             <div class="col"><button class="btn btn-danger p-2 pt-0 pb-0 m-1 mt-0 mb-0">X</button></div>
           </div>
