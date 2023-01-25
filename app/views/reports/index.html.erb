@@ -1,8 +1,13 @@
-<div class="page-title d-flex justify-content-between">
+<div class="page-title d-flex justify-content-between mb-4 p-2">
   <h2>Shift Report</h2>
-    <button type="button" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      +   Upload report
-    </button>
+    <div class="buttons">
+      <% if @restaurant.report %>
+        <%= link_to 'Delete report', report_path(@restaurant.report), class: "btn btn-danger rounded-1 m-1", method: :delete %>
+      <% end %>
+      <button type="button" class="btn btn-primary rounded-pill m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        + Upload report
+      </button>
+    </div>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -13,14 +18,32 @@
     <% end %>
   </div>
 </div>
-  <h3>filtered</h3>
   <% if @restaurant.report %>
-    <%= link_to 'Delete report', report_path(@restaurant.report), method: :delete %> <br>
-    <% @restaurant.report.data.each do |row| %>
-      <%= row.to_h["shift_start_time"] %><br>
-    <% end %>
-  <h3>unfiltered</h3>
-  <% @restaurant.report.data.each do |row| %>
-      <h4><%= row[2][1] %></h4> <p><%= row[4][1] %></p>
-  <% end %>
+
+    <div class="container">
+      <div class="row text-center border">
+        <div class="col">ID</div>
+        <div class="col col-4">Name</div>
+        <div class="col">Break</div>
+        <div class="col">Shift Start</div>
+        <div class="col">Shift Ends</div>
+        <div class="col">Missed</div>
+        <div class="col">Manage</div>
+      </div>
+      <% @restaurant.report.data.each do |row| %>
+        <div class="row border text-center align-items-center p-1">
+          <div class="col text-start"><%= row[1][1] %></div>
+          <div class="col-4 text-start"><%= row[2][1] %></div>
+          <div class="col">[  ]</div>
+          <div class="col"><%= row[4][1] %></div>
+          <div class="col"><%= row[5][1] %></div>
+          <div class="col">[  ]</div>
+          <div class="col d-flex align-items-center justify-content-center">
+            <div class="col"><button class="btn btn-secondary p-4 pt-0 pb-0 m-1 mt-0 mb-0">Edit</button></div>
+            <div class="col"><button class="btn btn-danger p-2 pt-0 pb-0 m-1 mt-0 mb-0">X</button></div>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
   <% end %>

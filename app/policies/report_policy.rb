@@ -10,6 +10,10 @@ class ReportPolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    create?
+  end
+
   def destroy?
     true
   end
