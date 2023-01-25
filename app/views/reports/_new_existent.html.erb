@@ -1,0 +1,15 @@
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">File upload</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <%= simple_form_for [@restaurant.report] do |f| %>
+        <%= f.file_field :file, accept: '.csv' %>
+        <div class="modal-footer mt-3">
+          <button type="button" class="btn btn-secondary rounded-1" data-bs-dismiss="modal">Close</button>
+          <%= f.submit 'Upload file', class: "btn btn-primary rounded-1" %>
+        </div>
+      <% end %>
+    </div>
+  </div>

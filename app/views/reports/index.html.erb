@@ -1,18 +1,56 @@
-<% if @reports.count == 0 %>
-  <h3>You have not uploaded a file yet.</h3>
-  <%= simple_form_for [@restaurant, @report] do |f| %>
-    <%= f.file_field :file, accept: '.csv' %> <br>
-    <%= f.submit %>
+<div class="page-title d-flex justify-content-between mb-4 p-2">
+  <h2>Shift Report</h2>
+    <div class="buttons">
+      <% if @restaurant.report %>
+        <%= link_to 'Delete report', report_path(@restaurant.report), class: "btn btn-danger rounded-1 m-1", method: :delete %>
+      <% end %>
+      <button type="button" class="btn btn-primary rounded-pill m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        + Upload report
+      </button>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <% if @restaurant.report %>
+      <%= render 'new_existent' %>
+    <% else %>
+      <%= render 'new' %>
     <% end %>
-<% else %>
-<br>
-  <%= link_to 'Delete report', report_path(@restaurant.report), method: :delete %> <br> <br>
-  <h3>filtered</h3>
-    <% @restaurant.report.data.each do |row| %>
-      <%= row.to_h["shift_start_time"] %><br>
-    <% end %>
-  <h3>unfiltered</h3>
-  <% @restaurant.report.data.each do |row| %>
-      <h4><%= row[2][1] %></h4> <p><%= row[4][1] %></p>
+  </div>
+</div>
+  <% if @restaurant.report %>
+    <div class="container report-table">
+      <div class="header row text-center border p-1">
+        <div class="col divisor"><h5>ID</h5></div>
+        <div class="col col-4 divisor"><h5>Name</h5></div>
+        <div class="col divisor"><h5>Break</h5></div>
+        <div class="col divisor"><h5>Start</h5></div>
+        <div class="col divisor"><h5>Finish</h5></div>
+        <div class="col divisor"><h5>Missed</h5></div>
+        <div class="col-2"><h5>Manage</h5></div>
+      </div>
+      <div class="row border p-1 text-center">
+        <div class="col"> </div>
+        <div class="col-4 text-start"><input class="col-12" type="text" placeholder="Select employee"></div>
+        <div class="col"> </div>
+        <div class="col">Starts</div>
+        <div class="col">Finishes</div>
+        <div class="col"> </div>
+        <div class="col-2"><button class="btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12">+ Add</button></div>
+      </div>
+      <% @restaurant.report.data.each do |row| %>
+        <div class="row border text-center align-items-center p-1">
+          <div class="col text-start"><%= row[1][1] %></div>
+          <div class="col-4 text-start"><%= row[2][1] %></div>
+          <div class="col"><input type="checkbox"></div>
+          <div class="col divisor"><%= row[4][1] %></div>
+          <div class="col"><%= row[5][1] %></div>
+          <div class="col"><input type="checkbox"></div>
+          <div class="col-2 d-flex align-items-center justify-content-between">
+              <button class="btn btn-secondary col-8">Edit</button>
+              <button class="btn btn-danger col-3">X</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-<% end %>

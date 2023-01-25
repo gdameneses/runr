@@ -34,6 +34,10 @@ class ReportsController < ApplicationController
 
   end
 
+  def update
+    create
+  end
+
   private
 
   def set_restaurant
