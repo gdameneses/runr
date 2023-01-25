@@ -38,19 +38,19 @@
         <div class="col"> </div>
         <div class="col-2"><button class="btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12">+ Add</button></div>
       </div>
-      <% @restaurant.report.data.each do |row| %>
-        <div class="row border text-center align-items-center p-1">
-          <div class="col text-start"><%= row[1][1] %></div>
-          <div class="col-4 text-start"><%= row[2][1] %></div>
-          <div class="col"><input type="checkbox"></div>
-          <div class="col divisor"><%= row[4][1] %></div>
-          <div class="col"><%= row[5][1] %></div>
-          <div class="col"><input type="checkbox"></div>
-          <div class="col-2 d-flex align-items-center justify-content-between">
-              <button class="btn btn-secondary col-8">Edit</button>
-              <button class="btn btn-danger col-3">X</button>
-          </div>
-        </div>
+      <% @restaurant.report.data.each_with_index do |row, i| %>
+        <%= turbo_frame_tag i, class:"row p-1" do %>
+            <div class="col text-start"><%= row[1][1] %></div>
+            <div class="col-4 text-start"><%= row[2][1] %></div>
+            <div class="col"><input type="checkbox"></div>
+            <div class="col divisor"><%= row[4][1] %></div>
+            <div class="col"><%= row[5][1] %></div>
+            <div class="col"><input type="checkbox"></div>
+            <div class="col-2 d-flex align-items-center justify-content-between">
+                <button class="btn btn-secondary col-8">Edit</button>
+                <button class="btn btn-danger col-3">X</button>
+            </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>
