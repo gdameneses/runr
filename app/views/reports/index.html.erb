@@ -20,28 +20,36 @@
 </div>
   <% if @restaurant.report %>
     <div class="container report-table">
-      <div class="header row text-center border">
-        <div class="col">ID</div>
-        <div class="col col-4">Name</div>
-        <div class="col">Break</div>
-        <div class="col">Shift Start</div>
-        <div class="col">Shift Ends</div>
-        <div class="col">Missed</div>
-        <div class="col-2">Manage</div>
+      <div class="header row text-center border p-1">
+        <div class="col divisor"><h5>ID</h5></div>
+        <div class="col col-4 divisor"><h5>Name</h5></div>
+        <div class="col divisor"><h5>Break</h5></div>
+        <div class="col divisor"><h5>Start</h5></div>
+        <div class="col divisor"><h5>Finish</h5></div>
+        <div class="col divisor"><h5>Missed</h5></div>
+        <div class="col-2"><h5>Manage</h5></div>
+      </div>
+      <div class="row border p-1 text-center">
+        <div class="col"> </div>
+        <div class="col-4 text-start"><input class="col-12" type="text" placeholder="Select employee"></div>
+        <div class="col"> </div>
+        <div class="col">Starts</div>
+        <div class="col">Finishes</div>
+        <div class="col"> </div>
+        <div class="col-2"><button class="btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12">+ Add</button></div>
       </div>
       <% @restaurant.report.data.each do |row| %>
         <div class="row border text-center align-items-center p-1">
           <div class="col text-start"><%= row[1][1] %></div>
           <div class="col-4 text-start"><%= row[2][1] %></div>
           <div class="col"><input type="checkbox"></div>
-          <div class="col"><%= row[4][1] %></div>
+          <div class="col divisor"><%= row[4][1] %></div>
           <div class="col"><%= row[5][1] %></div>
           <div class="col"><input type="checkbox"></div>
-          <div class="col-2 d-flex align-items-center justify-content-center">
-            <div class="col"><button class="btn btn-secondary p-4 pt-0 pb-0 m-1 mt-0 mb-0">Edit</button></div>
-            <div class="col"><button class="btn btn-danger p-2 pt-0 pb-0 m-1 mt-0 mb-0">X</button></div>
+          <div class="col-2 d-flex align-items-center justify-content-between">
+              <button class="btn btn-secondary col-8">Edit</button>
+              <button class="btn btn-danger col-3">X</button>
           </div>
-
         </div>
       <% end %>
     </div>
