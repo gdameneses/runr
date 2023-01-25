@@ -14,19 +14,30 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     @report.restaurant = @restaurant
     file = report_params[:file].tempfile
+
     CSV.foreach(file, headers: :first_row, header_converters: :symbol, col_sep: "\t", encoding: 'utf-16le:utf-8') do |row|
-      first_name = row[:employee_name].split(', ')[1]
-      last_name = row[:employee_name].split(', ')[0]
-      id = row[:employee_id]
-      s = Shift.new()
-      s.worker = Worker.find_by(number: id)
-      s.break = false
-      s.start = row[:shift_start_time]
-      s.finish = row[:shift_end_time]
-      s.missing = false
-      s.restaurant = @restaurant
-      s.report = @report
-      s.save
+      @first_name = row[:employee_name].split(', ')[1]
+      @last_name = row[:employee_name].split(', ')[0]
+      @id = row[:employee_id]
+
+      @start_time = row[:shift_start_time]
+      @finish_time = row[:shift_end_time]
+
+      @shift = Shift.new(break: false, start: @start_time, finish: @finish_time, missing: false)
+
+      @shift.restaurant = @restaurant
+
+      if Worker.find_by(number: @id).nil?
+        @worker = Worker.new(first_name: @first_name, last_name: @last_name, number: @id)
+        @worker.restaurant = @restaurant
+        @worker.save
+        @shift.worker = @worker
+      else
+        @worker = Worker.find_by(number: @id)
+        @shift.worker = @worker
+      end
+      @shift.report = @report
+      @shift.save
     end
     @report.save
     authorize @report
@@ -43,7 +54,7 @@ class ReportsController < ApplicationController
 
   def update
     @report = @restaurant.report
-    @repor
+    @report.destroy
     create
   end
 
