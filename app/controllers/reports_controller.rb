@@ -2,8 +2,8 @@ class ReportsController < ApplicationController
   require 'csv'
   before_action :set_restaurant, only: %i[index new create destroy]
   def index
-    @reports = policy_scope(Report)
     new unless @restaurant.report
+    @reports = policy_scope(Report)
   end
 
   def new
