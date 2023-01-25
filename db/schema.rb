@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_24_142629) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_25_193131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,8 +61,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_142629) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "restaurant_id", null: false
-    t.text "data", default: [], array: true
+    t.bigint "worker_id", null: false
+    t.boolean "break"
+    t.time "start"
+    t.time "finish"
+    t.boolean "missing"
     t.index ["restaurant_id"], name: "index_reports_on_restaurant_id"
+    t.index ["worker_id"], name: "index_reports_on_worker_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -117,6 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_142629) do
   add_foreign_key "floorplans", "restaurants"
   add_foreign_key "notes", "restaurants"
   add_foreign_key "reports", "restaurants"
+  add_foreign_key "reports", "workers"
   add_foreign_key "restaurants", "users"
   add_foreign_key "skills", "stations"
   add_foreign_key "skills", "workers"
