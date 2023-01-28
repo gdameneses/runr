@@ -26,10 +26,12 @@ class ApplicationController < ActionController::Base
         @last_name = row[:employee_name].split(', ')[0]
         @id = row[:employee_id]
 
-        @start_time = row[:shift_start_time]
-        @finish_time = row[:shift_end_time]
+        @date = row[:shift_start_date].split[0]
+        @start = Time.new("#{@date} #{row[:shift_start_time]}")
+        @finish = row[:shift_end_time]
 
-        @shift = Shift.new(break: false, start: @start_time, finish: @finish_time, missing: false)
+        @shift = Shift.new(break: false, start: @start, finish: @finish_time, missing: false)
+        @shift.start.advance(days: 4)
 
         @shift.restaurant = @restaurant
 
@@ -42,6 +44,7 @@ class ApplicationController < ActionController::Base
           @worker = Worker.find_by(number: @id)
           @shift.worker = @worker
         end
+
         @shift.report = @report
         @shift.save
       end

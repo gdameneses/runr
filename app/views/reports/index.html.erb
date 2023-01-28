@@ -39,15 +39,12 @@
         <div class="col-2"><button class="btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12">+ Add</button></div>
       </div>
       <% @restaurant.report.shifts.select do |shift| %>
-      <% ideal_start = Time.new(2023, 01, 29, 17, 00) %>
-      <% ideal_finish = Time.new(2023, 01, 27, 19, 00) %>
-
         <div class="row border text-center align-items-center p-1">
           <div class="col text-start"><%= shift.worker.number %></div>
           <div class="col-4 text-start"><%= "#{shift.worker.first_name} #{shift.worker.last_name}" %></div>
           <div class="col"><input type="checkbox"></div>
-          <div class="col divisor"><%= shift.start.strftime("%H:%M") %></div>
-          <div class="col"><%= shift.finish.strftime("%H:%M") %></div>
+          <div class="col divisor"><%= shift.start %></div>
+          <div class="col"><%= shift.finish %></div>
           <div class="col"><input type="checkbox"></div>
           <div class="col-2 d-flex align-items-center justify-content-between">
               <button class="btn btn-secondary col-8">Edit</button>

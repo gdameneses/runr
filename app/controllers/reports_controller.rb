@@ -43,36 +43,5 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:file)
   end
 
-  def csv_to_shift(file)
-    @report.file.blob.open do |file|
-      CSV.foreach(file, headers: :first_row, header_converters: :symbol, col_sep: "\t", encoding: 'utf-16le:utf-8') do |row|
-        @first_name = row[:employee_name].split(', ')[1]
-        @last_name = row[:employee_name].split(', ')[0]
-        @id = row[:employee_id]
 
-        @start_time = row[:shift_start_time]
-        @finish_time = row[:shift_end_time]
-
-        @shift = Shift.new(break: false, start: @start_time, finish: @finish_time, missing: false)
-
-        @shift.restaurant = @restaurant
-
-        if Worker.find_by(number: @id).nil?
-          @worker = Worker.new(first_name: @first_name, last_name: @last_name, number: @id)
-          @worker.restaurant = @restaurant
-          @worker.save
-          @shift.worker = @worker
-        else
-          @worker = Worker.find_by(number: @id)
-          @shift.worker = @worker
-        end
-        @shift.report = @report
-        @shift.save
-      end
-    end
-  end
-
-  def worker_from_report
-
-  end
 end
