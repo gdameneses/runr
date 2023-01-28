@@ -17,6 +17,13 @@ class ShiftsController < ApplicationController
     end
   end
 
+  def destroy
+    @shift = Shift.find(params[:id])
+    @shift.destroy
+    authorize @shift
+    redirect_to restaurant_reports_path(current_user.restaurant)
+  end
+
   private
 
   def shift_params

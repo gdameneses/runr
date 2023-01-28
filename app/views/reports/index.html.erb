@@ -50,7 +50,7 @@
           <div class="col"><input type="checkbox"></div>
           <div class="col-2 d-flex align-items-center justify-content-between">
               <button class="btn btn-secondary col-8">Edit</button>
-              <button class="btn btn-danger col-3">X</button>
+              <%= link_to 'X', shift_path(shift), class: "btn btn-danger col-3", method: :delete %>
           </div>
         </div>
       <% end %>
