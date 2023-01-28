@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_25_202919) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_28_151453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,11 +77,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_202919) do
     t.datetime "updated_at", null: false
     t.bigint "restaurant_id", null: false
     t.boolean "break"
-    t.time "start"
-    t.time "finish"
     t.boolean "missing"
     t.bigint "worker_id"
     t.bigint "report_id", null: false
+    t.datetime "start"
+    t.datetime "finish"
     t.index ["report_id"], name: "index_shifts_on_report_id"
     t.index ["restaurant_id"], name: "index_shifts_on_restaurant_id"
     t.index ["worker_id"], name: "index_shifts_on_worker_id"

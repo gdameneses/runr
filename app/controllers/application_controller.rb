@@ -28,10 +28,13 @@ class ApplicationController < ActionController::Base
 
         @date = row[:shift_start_date].split[0]
         @start = Time.new("#{@date} #{row[:shift_start_time]}")
-        @finish = row[:shift_end_time]
+        @finish = Time.new("#{@date} #{row[:shift_end_time]}")
 
-        @shift = Shift.new(break: false, start: @start, finish: @finish_time, missing: false)
-        @shift.start.advance(days: 4)
+        if @start > @finish
+          @finish = @finish + 86400
+        end
+
+        @shift = Shift.new(break: false, start: @start, finish: @finish, missing: false)
 
         @shift.restaurant = @restaurant
 
@@ -46,6 +49,7 @@ class ApplicationController < ActionController::Base
         end
 
         @shift.report = @report
+        @shift.finish.advance(days: 12)
         @shift.save
       end
     end
