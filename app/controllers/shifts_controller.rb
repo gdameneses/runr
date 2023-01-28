@@ -3,6 +3,20 @@ class ShiftsController < ApplicationController
     @shift = Shift.new()
     authorize @shift
   end
+
+  def edit
+    @shift = Shift.find(params[:id])
+    authorize @shift
+  end
+
+  def update
+    @shift = Shift.find(params[:id])
+    @shift.update(shift_params)
+    authorize @shift
+    @shift.save
+    redirect_to restaurant_reports_path(@shift.restaurant)
+  end
+
   def create
     @shift = Shift.new(shift_params)
     worker = set_worker(nil, params[:shift]["first_name"], params[:shift]["last_name"])
