@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_worker(id = nil, first_name, last_name)
-    worker = id ? Worker.find_by(number: id) : Worker.find_by(first_name: first_name, last_name: last_name)
+    worker = id ? Worker.find_by(number: id) : Worker.find_by("first_name ILIKE ? AND last_name ILIKE ?", first_name, last_name)
     if worker.nil?
       worker = Worker.new(first_name: first_name, last_name: last_name, number: id)
       worker.restaurant = current_user.restaurant
