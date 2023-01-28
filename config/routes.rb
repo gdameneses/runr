@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
 
   shallow do
+    resources :shifts, only: %i[new create destroy edit update]
     resources :restaurants, only: %i[new create show destroy] do
       resources :workers do
         resources :skills

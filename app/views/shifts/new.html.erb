@@ -1,0 +1,18 @@
+<%= simple_form_for @shift do |f| %>
+  <div class="row align-items-center p-4">
+    <div class="col-2 string required first_name">
+      <input class="form-control string required" type="text" name="shift[first_name]" id="shift_first_name" placeholder="First Name">
+    </div>
+    <div class="col-2 string require last_name">
+      <input class="form-control string required" type="text" name="shift[last_name]" id="shift_last_name" placeholder="Last Name">
+    </div>
+    <div class="col-1 string require start">
+      <input class="form-control string required" type="text" name="shift[start]" id="shift_start" placeholder="Start">
+    </div>:
+    <div class="col-1 string require finish">
+      <input class="form-control string required" type="text" name="shift[finish]" id="shift_finish" placeholder="Finish">
+    </div>
+    <%= f.submit class:"btn btn-success col-1" %>
+    </div>
+  </div>
+<% end %>

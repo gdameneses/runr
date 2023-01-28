@@ -4,6 +4,7 @@ class ReportsController < ApplicationController
   def index
     new unless @restaurant.report
     @reports = policy_scope(Report)
+    @shift = Shift.new()
   end
 
   def new

@@ -22,40 +22,43 @@ class ApplicationController < ActionController::Base
     def csv_to_shift(file)
     @report.file.blob.open do |file|
       CSV.foreach(file, headers: :first_row, header_converters: :symbol, col_sep: "\t", encoding: 'utf-16le:utf-8') do |row|
-        @first_name = row[:employee_name].split(', ')[1]
-        @last_name = row[:employee_name].split(', ')[0]
-        @id = row[:employee_id]
+        first_name = row[:employee_name].split(', ')[1]
+        last_name = row[:employee_name].split(', ')[0]
+        id = row[:employee_id]
+        date = row[:shift_start_date].split[0]
+        start = Time.new("#{date} #{row[:shift_start_time]}")
+        finish = Time.new("#{date} #{row[:shift_end_time]}")
 
-        @date = row[:shift_start_date].split[0]
-        @start = Time.new("#{@date} #{row[:shift_start_time]}")
-        @finish = Time.new("#{@date} #{row[:shift_end_time]}")
+        finish = finish + 86400 if start > finish
 
-        if @start > @finish
-          @finish = @finish + 86400
-        end
-
-        @shift = Shift.new(break: false, start: @start, finish: @finish, missing: false)
-
+        @shift = Shift.new(break: false, start: start, finish: finish, missing: false)
         @shift.restaurant = @restaurant
-
-        if Worker.find_by(number: @id).nil?
-          @worker = Worker.new(first_name: @first_name, last_name: @last_name, number: @id)
-          @worker.restaurant = @restaurant
-          @worker.save
-          @shift.worker = @worker
-        else
-          @worker = Worker.find_by(number: @id)
-          @shift.worker = @worker
-        end
-
         @shift.report = @report
-        @shift.finish.advance(days: 12)
+        @shift.worker = set_worker(id, first_name, last_name)
         @shift.save
       end
     end
   end
 
-  def worker_from_report
+  def set_worker_from_id(id)
+    if Worker.find_by(number: id).nil?
+      @worker = Worker.new(first_name: first_name, last_name: last_name, number: id)
+      @worker.restaurant = @restaurant
+      @worker.save
+      @shift.worker = @worker
+    else
+      @worker = Worker.find_by(number: id)
+      @shift.worker = @worker
+    end
+  end
 
+  def set_worker(id = nil, first_name, last_name)
+    worker = id ? Worker.find_by(number: id) : Worker.find_by(first_name: first_name, last_name: last_name)
+    if worker.nil?
+      worker = Worker.new(first_name: first_name, last_name: last_name, number: id)
+      worker.restaurant = current_user.restaurant
+      worker.save
+    end
+    worker
   end
 end

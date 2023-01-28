@@ -31,12 +31,14 @@
       </div>
       <div class="row border p-1 text-center">
         <div class="col"> </div>
-        <div class="col-4 text-start"><input class="col-12" type="text" placeholder="Select employee"></div>
+        <div class="col-4 text-start"><input class="col-12" type="text" placeholder="Work in progress"></div>
         <div class="col"> </div>
         <div class="col">Starts</div>
         <div class="col">Finishes</div>
         <div class="col"> </div>
-        <div class="col-2"><button class="btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12">+ Add</button></div>
+        <div class="col-2">
+          <%= link_to '+ New shift', new_shift_path, class: "btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12" %>
+        </div>
       </div>
       <% @restaurant.report.shifts.select do |shift| %>
         <div class="row border text-center align-items-center p-1">
