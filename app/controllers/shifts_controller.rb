@@ -18,17 +18,19 @@ class ShiftsController < ApplicationController
   end
 
   def create
-    @shift = Shift.new(shift_params)
+    @shift = Shift.new({:start=>shift_params[:start], :finish=>shift_params[:finish]})
     worker = set_worker(nil, params[:shift]["first_name"], params[:shift]["last_name"])
     @shift.worker = worker
     @shift.restaurant = current_user.restaurant
-    @shift.report = current_user.restaurant.report
-    if @shift.save
-      authorize @shift
+    create_report if @shift.restaurant.report.nil?
+    @shift.report = @shift.restaurant.report
+    authorize @shift
+    @shift.save
+    # if @shift.save
       redirect_to restaurant_reports_path(@shift.restaurant)
-    else
-      render 'new'
-    end
+    # else
+      # render 'new'
+    # end
   end
 
   def destroy
@@ -41,9 +43,15 @@ class ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.require(:shift).permit(:start, :finish) do |p|
+    params.require(:shift).permit(:start, :finish, :first_name, :last_name) do |p|
       p[:start] = Time.parse(p[:start])
       p[:finish] = Time.parse(p[:finish])
     end
+  end
+
+  def create_report
+    report = Report.new
+    report.restaurant = current_user.restaurant
+    report.save
   end
 end
