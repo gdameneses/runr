@@ -1,5 +1,4 @@
 class ReportsController < ApplicationController
-  require 'csv'
   before_action :set_restaurant, only: %i[index new create destroy update]
   def index
     new unless @restaurant.report

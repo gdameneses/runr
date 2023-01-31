@@ -1,6 +1,10 @@
 class ShiftsController < ApplicationController
   def index
-    @shifts = policy_scope(Shift)
+    @shifts = current_user.restaurant.report.shifts
+    respond_to do |format|
+      format.html
+      format.js { render template: 'shifts/index' }
+    end
   end
 
   def new

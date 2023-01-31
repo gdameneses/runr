@@ -40,7 +40,5 @@
         </div>
       </div>
   <% if @restaurant.report %>
-    <div class="shifts">
-      <%= render 'shifts/index' %>
-    </div>
+    <%= render @restaurant.report.shifts %>
   <% end %>
