@@ -1,4 +1,8 @@
 class ShiftsController < ApplicationController
+  def index
+    @shifts = policy_scope(Shift)
+  end
+
   def new
     @shift = Shift.new()
     authorize @shift
@@ -26,11 +30,11 @@ class ShiftsController < ApplicationController
     @shift.report = @shift.restaurant.report
     authorize @shift
     @shift.save
-    # if @shift.save
+    if @shift.save
       redirect_to restaurant_reports_path(@shift.restaurant)
-    # else
-      # render 'new'
-    # end
+    else
+      render 'new'
+    end
   end
 
   def destroy
