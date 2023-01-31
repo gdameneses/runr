@@ -33,6 +33,10 @@ class ReportsController < ApplicationController
     create
   end
 
+  def sort
+
+  end
+
   private
 
   def set_restaurant

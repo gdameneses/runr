@@ -28,17 +28,14 @@
         <div class="col divisor"><h5>Missed</h5></div>
         <div class="col-2"><h5>Manage</h5></div>
       </div>
-      <div class="row border p-1 text-center">
-        <div class="col"> </div>
-        <div class="col-4 text-start"><input class="col-12" type="text" placeholder="Work in progress"></div>
-        <div class="col"> </div>
-        <div class="col">Starts</div>
-        <div class="col">Finishes</div>
-        <div class="col"> </div>
+      <%= turbo_frame_tag 'new', class:"row border p-1 text-center justify-content-end" do %>
+
         <div class="col-2">
-          <%= link_to '+ New shift', new_shift_path, class: "btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12" %>
+          <%= link_to '+ Add a shift', new_shift_path, class: "btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12" %>
         </div>
-      </div>
+      <% end %>
   <% if @restaurant.report %>
-    <%= render @restaurant.report.shifts %>
+    <div class="report-table p-0">
+      <%= render @restaurant.report.shifts %>
+    </div>
   <% end %>

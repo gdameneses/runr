@@ -1,14 +1,3 @@
-<%= simple_form_for(@shift) do |f| %>
-  <div class="row align-items-center p-4">
-    <input type="text" class="col-2 p-1 m-1" disabled placeholder=<%= @shift.worker.first_name %>>
-    <input type="text" class="col-2 p-1 m-1" disabled placeholder=<%= @shift.worker.last_name %>>
-    <div class="col-1 string require start">
-      <input class="form-control string required" type="time" name="shift[start]" id="shift_start" placeholder="Start">
-    </div> to
-    <div class="col-1 string require finish">
-      <input class="form-control string required" type="time" name="shift[finish]" id="shift_finish" placeholder="Finish">
-    </div>
-      <%= f.submit class:"btn btn-success col-1" %>
-    </div>
-  </div>
+<%= turbo_frame_tag @shift do %>
+  <%= render 'form' %>
 <% end %>

@@ -318,6 +318,7 @@ DEPENDENCIES
   selenium-webdriver (>= 4.0.0.rc1)
   simple_form!
   spring
+  turbo-rails
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)

@@ -1,12 +1,12 @@
-  <div class="row border text-center align-items-center p-1">
-    <div class="col text-start"><%= shift.worker.number %></div>
-    <div class="col-4 text-start"><%= "#{shift.worker.first_name} #{shift.worker.last_name}" %></div>
-    <div class="col"><input type="checkbox"></div>
-    <div class="col divisor"><%= shift.start.strftime("%H:%M") %></div>
-    <div class="col"><%= shift.finish.strftime("%H:%M") %></div>
-    <div class="col"><input type="checkbox"></div>
-    <div class="col-2 d-flex align-items-center justify-content-between">
-        <%= link_to 'Edit', edit_shift_path(shift), class: "btn btn-secondary col-8" %>
-        <%= link_to 'X', shift_path(shift), class: "btn btn-danger col-3", method: :delete %>
-    </div>
+<%= turbo_frame_tag shift, class:"row text-center align-items-center p-1" do %>
+  <div class="col text-start"><%= shift.worker.number %></div>
+  <div class="col-4 text-start"><%= "#{shift.worker.first_name} #{shift.worker.last_name}" %></div>
+  <div class="col"><input type="checkbox"></div>
+  <div class="col divisor"><%= shift.start.strftime("%H:%M") %></div>
+  <div class="col"><%= shift.finish.strftime("%H:%M") %></div>
+  <div class="col"><input type="checkbox"></div>
+  <div class="col-2 d-flex align-items-center justify-content-between">
+    <%= link_to 'Edit', edit_shift_path(shift), class: "btn btn-secondary col-8" %>
+    <%= link_to 'X', shift_path(shift), class: "btn btn-danger col-3", method: :delete %>
   </div>
+<% end %>
