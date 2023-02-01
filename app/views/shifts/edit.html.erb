@@ -11,7 +11,7 @@
       <input class="form-control string required" type="time" name="shift[finish]" id="shift_finish" value=<%="#{@shift.finish.hour}:#{@shift.finish.min}" %>>
     </div>
     <div class="col">
-      <%= f.submit 'Save', class:"btn btn-success col-6 m-1", id:'save'%>
+      <%= f.submit 'Save', class:"btn btn-success col-6 m-1", id: 'save' %>
       <%= link_to 'Back', restaurant_reports_path(current_user.restaurant), class:"btn btn-secondary col-4" %>
     </div>
   </div>
