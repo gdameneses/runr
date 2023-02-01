@@ -1,10 +1,6 @@
 class ShiftsController < ApplicationController
   def index
     @shifts = current_user.restaurant.report.shifts
-    respond_to do |format|
-      format.html
-      format.js { render template: 'shifts/index' }
-    end
   end
 
   def new
@@ -19,7 +15,7 @@ class ShiftsController < ApplicationController
 
   def update
     @shift = Shift.find(params[:id])
-    @shift.update(shift_params)
+    @shift.update({:start=>shift_params[:start], :finish=>shift_params[:finish]})
     authorize @shift
     @shift.save
     redirect_to restaurant_reports_path(@shift.restaurant)
@@ -29,13 +25,23 @@ class ShiftsController < ApplicationController
     @shift = Shift.new({:start=>shift_params[:start], :finish=>shift_params[:finish]})
     worker = set_worker(nil, params[:shift]["first_name"], params[:shift]["last_name"])
     @shift.worker = worker
-    @shift.restaurant = current_user.restaurant
+    @restaurant = current_user.restaurant
+    @shift.restaurant = @restaurant
     create_report if @shift.restaurant.report.nil?
     @shift.report = @shift.restaurant.report
     authorize @shift
-    @shift.save
     if @shift.save
-      redirect_to restaurant_reports_path(@shift.restaurant)
+      respond_to do |format|
+        format.turbo_stream do
+          turbo_stream.remove(:new_shift)
+          render turbo_stream: turbo_stream.append(:shifts, partial: "shifts/shift", locals: { shift: @shift })
+      end
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.remove(:new_shift)
+      end
+      format.html { redirect_to restaurant_reports_url(@restaurant) }
+
+    end
     else
       render 'new'
     end
@@ -45,7 +51,10 @@ class ShiftsController < ApplicationController
     @shift = Shift.find(params[:id])
     @shift.destroy
     authorize @shift
-    redirect_to restaurant_reports_path(current_user.restaurant)
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@shift) }
+      format.html         { redirect_to restaurant_reports_url(@restaurant) }
+    end
   end
 
   private

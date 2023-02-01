@@ -1,4 +1,4 @@
-<%= turbo_frame_tag shift, class:"row text-center align-items-center p-1" do %>
+<%= turbo_frame_tag dom_id(shift), class:"row text-center align-items-center p-1" do %>
   <div class="col text-start"><%= shift.worker.number %></div>
   <div class="col-4 text-start"><%= "#{shift.worker.first_name} #{shift.worker.last_name}" %></div>
   <div class="col"><input type="checkbox"></div>

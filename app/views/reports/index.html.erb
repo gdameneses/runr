@@ -28,14 +28,20 @@
         <div class="col divisor"><h5>Missed</h5></div>
         <div class="col-2"><h5>Manage</h5></div>
       </div>
-      <%= turbo_frame_tag 'new', class:"row border p-1 text-center justify-content-end" do %>
 
+      <%= turbo_frame_tag 'new', class:"row border p-1 text-center justify-content-end" do %>
         <div class="col-2">
-          <%= link_to '+ Add a shift', new_shift_path, class: "btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12" %>
+          <%= link_to '+ Add a shift', new_shift_path, class: "btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12", id:"open-form" %>
         </div>
       <% end %>
-  <% if @restaurant.report %>
-    <div class="report-table p-0">
-      <%= render @restaurant.report.shifts %>
+    <div class="report-table p-0" id="shifts">
+      <% if @restaurant.report %>
+        <%= render partial: "shifts/shift", collection: @shifts %>
     </div>
   <% end %>
+
+<script>
+  const callForm = document.getElementById('open-form');
+  const clicked = () => console.log('Clicked');
+  callForm.addEventListener('click', clicked);
+</script>

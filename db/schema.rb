@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_28_151453) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_31_210358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,8 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_28_151453) do
     t.boolean "missing"
     t.bigint "worker_id"
     t.bigint "report_id", null: false
-    t.datetime "start"
-    t.datetime "finish"
+    t.datetime "start", precision: nil, null: false
+    t.datetime "finish", precision: nil, null: false
     t.index ["report_id"], name: "index_shifts_on_report_id"
     t.index ["restaurant_id"], name: "index_shifts_on_restaurant_id"
     t.index ["worker_id"], name: "index_shifts_on_worker_id"
