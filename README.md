@@ -12,3 +12,7 @@ Also can read a specific .csv file and translate it into the database into a edi
 
 <h3>Tasklist</h3>
 Quickly create notes, mark them as done or simply discard the ones you don't need.
+
+
+<h4>Tech stack</h4>
+I am using Ruby on Rails with PostgreSQL. So far I haven't used vanilla Javascript, only using hotwire with turboframe and turbo stream so far. Lot's of back end strategies have been put in place.
