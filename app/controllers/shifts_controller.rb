@@ -1,6 +1,14 @@
 class ShiftsController < ApplicationController
   def index
-    @shifts = current_user.restaurant.report.shifts
+    @shifts = policy_scope(Shift)
+    respond_to do |format|
+      format.json {
+        render json: @shifts
+      }
+      format.html {
+        render json: @shifts
+      }
+    end
   end
 
   def new
@@ -18,7 +26,7 @@ class ShiftsController < ApplicationController
     @shift.update({:start=>shift_params[:start], :finish=>shift_params[:finish]})
     authorize @shift
     @shift.save
-    redirect_to restaurant_reports_path(@shift.restaurant)
+    redirect_to restaurant_report_path(@shift.restaurant)
   end
 
   def create
@@ -33,14 +41,9 @@ class ShiftsController < ApplicationController
     if @shift.save
       respond_to do |format|
         format.turbo_stream do
-          turbo_stream.remove(:new_shift)
           render turbo_stream: turbo_stream.append(:shifts, partial: "shifts/shift", locals: { shift: @shift })
       end
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.remove(:new_shift)
-      end
-      format.html { redirect_to restaurant_reports_url(@restaurant) }
-
+      format.html { redirect_to restaurant_report_url(@restaurant) }
     end
     else
       render 'new'
@@ -53,7 +56,7 @@ class ShiftsController < ApplicationController
     authorize @shift
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.remove(@shift) }
-      format.html         { redirect_to restaurant_reports_url(@restaurant) }
+      format.html         { redirect_to restaurant_report_url(@restaurant) }
     end
   end
 

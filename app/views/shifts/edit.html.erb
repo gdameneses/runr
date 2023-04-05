@@ -5,14 +5,14 @@
     <input type="text" name="shift[last_name]" placeholder=<%= @shift.worker.last_name %> class="col-3 p-1 m-1">
     <div class="col"></div>
     <div class="col divisor string require start">
-      <input class="form-control string required" type="time" name="shift[start]" id="shift_start" value=<%= "#{@shift.start.hour}:#{@shift.start.min}" %>>
+      <input class="form-control string required" type="time" name="shift[start]" id="shift_start" value=<%= "#{@shift.start.strftime("%H")}:#{@shift.start.strftime("%M")}" %>>
     </div>
     <div class="col string require finish">
-      <input class="form-control string required" type="time" name="shift[finish]" id="shift_finish" value=<%="#{@shift.finish.hour}:#{@shift.finish.min}" %>>
+      <input class="form-control string required" type="time" name="shift[finish]" id="shift_finish" value=<%="#{@shift.finish.strftime("%H")}:#{@shift.finish.strftime("%M")}" %>>
     </div>
     <div class="col">
       <%= f.submit 'Save', class:"btn btn-success col-6 m-1", id: 'save' %>
-      <%= link_to 'Back', restaurant_reports_path(current_user.restaurant), class:"btn btn-secondary col-4" %>
+      <%= link_to 'Back', restaurant_report_path(current_user.restaurant), class:"btn btn-secondary col-4" %>
     </div>
   </div>
 <% end %>

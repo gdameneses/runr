@@ -23,8 +23,8 @@
         <div class="col divisor"><h5>ID</h5></div>
         <div class="col col-4 divisor"><h5>Name</h5></div>
         <div class="col divisor"><h5>Break</h5></div>
-        <div class="col divisor"><h5>Start</h5></div>
-        <div class="col divisor"><h5>Finish</h5></div>
+        <div class="col divisor" id="start"><h5>Start</h5></div>
+        <div class="col divisor" id="finish"><h5>Finish</h5></div>
         <div class="col divisor"><h5>Missed</h5></div>
         <div class="col-2"><h5>Manage</h5></div>
       </div>
@@ -35,8 +35,25 @@
         </div>
       <% end %>
     <div class="report-table p-0" id="shifts">
-      <%# if @restaurant.report %>
-        <!--<%= render partial: "shifts/shift", collection: @shifts %>-->
+      <% if @restaurant.report %>
+        <%= render partial: "shifts/shift", collection: @restaurant.report.shifts %>
     </div>
-      <%# end %>
-<!--%= javascript_pack_tag "reports" %>
+      <% end %>
+<!-- %= javascript_pack_tag "report_show" %-->
+
+<script>
+// table.firstElementChild.children[1].innerText
+const table = document.getElementById('shifts');
+const tableHeader = document.getElementsByClassName('header')[0];
+const rows = table.childNodes;
+rowsArray = [];
+const sortByStarting = (row) => {
+  rowsArray.push(row);
+  };
+rows.forEach(row => sortByStarting(row));
+
+
+
+
+
+</script>

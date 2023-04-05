@@ -10,9 +10,11 @@ Rails.application.routes.draw do
       resources :workers do
         resources :skills
       end
+      get '/report', to: 'reports#show'
+      get '/shifts', to: 'shifts#index'
       resources :stations, except: [:show]
       resources :floorplans
-      resources :reports
+      resources :reports, except: [:show]
       resources :notes, only: %i[new edit create update destroy]
     end
   end
