@@ -1,12 +1,109 @@
-.navbar-lewagon {
+.navbar {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  color: rgb(21, 21, 30);
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 64px;
+  box-shadow: 0 0 8px 2px rgb(80, 80, 120);
+  background-color: rgb(250, 248, 248);
+  padding: 0;
+  flex-direction: column;
+  top: 0;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.navbar-expanded {
+  background-color: rgba(250, 248, 248, 0.9);
+  height: 544px;
+  box-shadow: 0 0px 40px 16px rgb(80, 80, 120);
+}
+
+.navbar-expanded .navbar-logo {
+  flex-grow: 2;
+}
+
+.navbar .logo {
+  padding: 1.5rem;
+  background-color: rgb(250, 248, 248);
+  width: 100%;
   justify-content: space-between;
-  background: white;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar h4,
+.navbar .h4 {
+  margin: 0;
+  font-weight: 700;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar a {
+  color: rgb(21, 21, 30);
+  margin: 0;
+  padding: 2rem 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  top: -100vh;
+  transition: 0.3s;
+}
+
+.navigation-active {
+  flex-grow: 1;
+  top: 0vh;
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    height: 64px;
+    box-shadow: 0 0 4px 0 rgb(80, 80, 120);
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    align-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-expanded {
+    background-color: rgb(250, 248, 248);
+  }
+
+  .navbar a {
+    padding: 0;
+    transition: 0.5s;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar a:hover {
+    text-shadow: 1px 1px 2px #d7d7d7;
+    background-color: rgba(40, 40, 40, 0.1);
+  }
+
+  .navbar-item {
+    margin: 0.5rem;
+  }
+
+  .navbar .logo {
+    padding: 1rem;
+    margin: 0;
+    width: fit-content;
+  }
+
+  .navigation {
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    top: 0vh;
+  }
 }
