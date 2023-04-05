@@ -19,8 +19,6 @@ const navbar = () => {
   // Adds both functions to navbar on specific events
   navbar.addEventListener("click", expandNavbar);
   navbar.addEventListener("mouseleave", retractNavbar);
-  console.log(navbar)
 }
-
 
 export { navbar };

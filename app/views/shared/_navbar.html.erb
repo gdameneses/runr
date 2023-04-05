@@ -1,18 +1,17 @@
-
-  <nav class="navbar">
-    <div class="logo">
-      <div class="navbar-logo">
-        <h4>RUNR</h4>
-      </div>
+<nav class="navbar">
+  <div class="logo">
+    <div class="navbar-logo">
+      <h4>RUNR</h4>
     </div>
-    <div class="navigation">
-        <% if user_signed_in? %>
-        <%= link_to "Dashboard", dashboard_path%>
-        <%= link_to "Manage your restaurant", restaurant_path(current_user.restaurant) if current_user.restaurant  %>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        <% else %>
-        <%= link_to "Log in", new_user_session_path %>
-        <% end %>
-    </div>
-    </div>
-  </nav>
+  </div>
+  <div class="navigation">
+      <% if user_signed_in? %>
+      <%= link_to "Dashboard", dashboard_path%>
+      <%= link_to "Manage your restaurant", restaurant_path(current_user.restaurant) if current_user.restaurant  %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      <% else %>
+      <%= link_to "Log in", new_user_session_path %>
+      <% end %>
+  </div>
+  </div>
+</nav>
