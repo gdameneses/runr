@@ -1,6 +1,6 @@
 class Restaurant < ApplicationRecord
   belongs_to :user
-  has_one :report
+  has_one :report, dependent: :destroy
   has_many :workers, dependent: :destroy
   has_many :floorplans, dependent: :destroy
   has_many :stations, dependent: :destroy

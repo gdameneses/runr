@@ -1,0 +1,17 @@
+<%= simple_form_for(@shift) do |f| %>
+  <div class="row align-items-center">
+    <input type="text" name="shift[first_name]" placeholder=<%= @shift.worker.present? ? @shift.worker.first_name : 'First name' %> class="col-2 p-1 m-1">
+    <input type="text" name="shift[last_name]" placeholder=<%= @shift.worker.present? ? @shift.worker.last_name : 'Last name' %> class="col-3 p-1 m-1">
+    <div class="col"></div>
+    <div class="col divisor string require start">
+      <input class="form-control string required" type="time" name="shift[start]" id="shift_start" value=<%= @shift.start.nil? ? '' : "#{@shift.start.hour}:#{@shift.start.min}" %>>
+    </div>
+    <div class="col string require finish">
+      <input class="form-control string required" type="time" name="shift[finish]" id="shift_finish" value=<%= @shift.finish.nil? ? '' : "#{@shift.finish.hour}:#{@shift.finish.min}" %>>
+    </div>
+    <div class="col">
+      <%= f.submit 'Save', class:"btn btn-success col-6 m-1" %>
+      <%= link_to 'Back', restaurant_reports_path(current_user.restaurant), class:"btn btn-secondary col-4" %>
+    </div>
+  </div>
+<% end %>

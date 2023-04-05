@@ -1,0 +1,28 @@
+<%= turbo_frame_tag 'new' do %>
+  <%= simple_form_for(@shift) do |f| %>
+  <div class="row align-items-top p-2">
+    <div class="col-2">
+      <input type="text" name="shift[first_name]" placeholder='First name' class="col-12">
+    </div>
+    <div class="col-3">
+      <input type="text" name="shift[last_name]" placeholder='Last name' class="col-12">
+    </div>
+    <div class="col divisor string require start d-flex flex-column">
+      <input class="form-control string required" type="time" name="shift[start]" id="shift_start">
+    <% if @shift.errors.include?(:start) %>
+        <p class="error-message m-0 p-0">When do we start?</p>
+    <% end %>
+    </div>
+    <div class="col string require finish">
+      <input class="form-control string required" type="time" name="shift[finish]" id="shift_finish">
+      <% if @shift.errors.include?(:finish) %>
+        <p class="error-message m-0 p-0">When do we finish?</p>
+      <% end %>
+    </div>
+    <div class="col-3">
+      <%= f.submit 'Add', class: "btn btn-success col-6", id: "save" %>
+      <%= link_to 'Back', restaurant_report_path(current_user.restaurant), class:"btn btn-secondary col-4" %>
+    </div>
+  </div>
+<% end %>
+<% end %>

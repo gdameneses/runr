@@ -1,4 +1,4 @@
-class ReportPolicy < ApplicationPolicy
+class ShiftPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -6,8 +6,8 @@ class ReportPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true
+  def new?
+    create?
   end
 
   def create?

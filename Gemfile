@@ -31,6 +31,11 @@ gem 'bootstrap'
 gem 'faker'
 
 gem 'pundit'
+
+gem 'hotwire-rails', '~> 0.1.3'
+
+gem 'turbo-rails'
+
 #authorization gem pundit
 
 # Use Active Storage variant

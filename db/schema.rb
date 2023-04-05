@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_24_142629) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_31_210358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,10 +58,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_142629) do
   end
 
   create_table "reports", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "restaurant_id", null: false
-    t.text "data", default: [], array: true
     t.index ["restaurant_id"], name: "index_reports_on_restaurant_id"
   end
 
@@ -71,6 +70,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_142629) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_restaurants_on_user_id"
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "restaurant_id", null: false
+    t.boolean "break"
+    t.boolean "missing"
+    t.bigint "worker_id"
+    t.bigint "report_id", null: false
+    t.datetime "start", precision: nil, null: false
+    t.datetime "finish", precision: nil, null: false
+    t.index ["report_id"], name: "index_shifts_on_report_id"
+    t.index ["restaurant_id"], name: "index_shifts_on_restaurant_id"
+    t.index ["worker_id"], name: "index_shifts_on_worker_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -109,6 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_142629) do
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number"
     t.index ["restaurant_id"], name: "index_workers_on_restaurant_id"
   end
 
@@ -118,6 +133,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_142629) do
   add_foreign_key "notes", "restaurants"
   add_foreign_key "reports", "restaurants"
   add_foreign_key "restaurants", "users"
+  add_foreign_key "shifts", "reports"
+  add_foreign_key "shifts", "restaurants"
+  add_foreign_key "shifts", "workers"
   add_foreign_key "skills", "stations"
   add_foreign_key "skills", "workers"
   add_foreign_key "stations", "restaurants"

@@ -5,13 +5,16 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
 
   shallow do
+    resources :shifts, only: %i[index new create destroy edit update]
     resources :restaurants, only: %i[new create show destroy] do
       resources :workers do
         resources :skills
       end
+      get '/report', to: 'reports#show'
+      get '/shifts', to: 'shifts#index'
       resources :stations, except: [:show]
       resources :floorplans
-      resources :reports
+      resources :reports, except: [:show]
       resources :notes, only: %i[new edit create update destroy]
     end
   end
