@@ -7,13 +7,13 @@
           <div class="dashboard-card card floorplan">
             <div class="card-header">
               <h3>Floorplan</h3>
-              <%= link_to 'Create new', '#', class: "btn btn-primary rounded-pill" %>
+              <%= link_to 'Create new', '#', class: "btn btn-primary rounded-pill  card-header-button" %>
             </div>
           </div>
           <div class="card dashboard-card report">
             <div class="card-header d-flex">
-              <h4 class="card-title">Shift Report</h4>
-              <%= link_to "Manage report", restaurant_report_path(@restaurant), class: "btn btn-primary rounded-pill" %>
+              <h3 class="card-title">Shift Report</h4>
+              <%= link_to "Manage report", restaurant_report_path(@restaurant), class: "btn btn-primary rounded-pill card-header-button" %>
             </div>
             <div class="card-body">
             </div>
@@ -25,7 +25,7 @@
               <h3 class="card-title" anchor="notes">
                 Notes
               </h3>
-              <button type="button" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button type="button" class="btn btn-primary rounded-pill  card-header-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 +Add note
               </button>
             </div>

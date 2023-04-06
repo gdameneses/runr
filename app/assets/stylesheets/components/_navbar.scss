@@ -4,7 +4,7 @@
   display: flex;
   width: 100%;
   height: 64px;
-  background-color: $grey;
+  background-color: #e1e1ff12;
   padding: 0;
   flex-direction: column;
   top: 0;
@@ -25,7 +25,6 @@
 .navbar .logo {
   padding: 1.5rem;
   color: $white;
-  background-color: $grey;
   width: 100%;
   justify-content: space-between;
 }
@@ -50,6 +49,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  flex-grow: 1;
   position: relative;
   transition: 0.3s;
 }
@@ -61,14 +61,13 @@
 
 @media (min-width: 992px) {
   .navbar {
+    position: absolute;
     width: 80px;
     height: 100vh;
     flex-direction: row;
-    justify-content: flex-start;
-    padding: 0.5rem;
-    align-content: space-between;
+    justify-content: center;
+    align-content: flex-start;
     align-items: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .nav-menu-text {
@@ -85,15 +84,16 @@
 
   .navbar a {
     height: 64px;
-    padding: 0.5rem;
+    padding: 3rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 8px 0 0 8px;
   }
 
   .navbar a:hover {
     text-shadow: 1px 1px 2px #d7d7d7;
-    background-color: rgba(40, 40, 40, 0.1);
+    background-color: rgba(189, 186, 186, 0.1);
   }
 
   .navbar-item {
@@ -101,12 +101,15 @@
   }
 
   .navbar .logo {
-    padding: 0 1rem;
-    margin: 0;
+    margin: 1rem 0 16vh 0;
     width: fit-content;
   }
 
   .navbar h4 {
     font-size: 40px;
+  }
+
+  .navigation .active {
+    background-color: $grey;
   }
 }
