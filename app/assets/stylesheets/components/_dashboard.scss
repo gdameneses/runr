@@ -4,17 +4,24 @@
 
 .dashboard {
   height: 100vh;
+  flex-grow: 1;
+  background-color: $grey;
+  padding: 0.5rem;
 }
 
 .dashboard-card {
-  margin: 1rem 0.5rem 1rem 0.5rem;
-  // padding: 1rem;
-  border: solid red;
+  margin: 0.5rem;
+  background-color: $greyblue;
+  border-radius: 16px;
 
   .card-header{
     display: flex;
     justify-content: space-between;
     padding-bottom: 2rem;
-    border-bottom: solid grey 1px;
+    background-color: initial;
   }
+}
+
+.tasklist {
+  height: -webkit-fill-available;
 }
