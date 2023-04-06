@@ -2,7 +2,7 @@
 A management tool made by a manager, to managers. I personally dislike using pen and paper in 2023, using it in a daily basis and having trouble to see information that I should be seeing quickly with a decent user interface, made me come up with Runr. You will be able to manage your shifts ideally using a tablet for maximum  mobility, write down your to-dos and remembers and quickly understand what will be happening within the next hours of your shift. 
 <h3>Dashboard</h3>
 That's how the dashboard looks so far, still items to be added but this is a really good idea of how I want it to look once it's finished.
-
+<br>
 <img src="https://i.imgur.com/NDWeLYY.png">
 A fancy looking dashboard carrying information of all the other parts of the app, all in a nice visual to make it all visual appealing and bringin information in an easier way to help the user plan around their day.
 <h3>Floorplan</h3>
