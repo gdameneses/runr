@@ -5,8 +5,8 @@ import HelloController from "./hello_controller"
 
 
 import { application } from "./application"
-import { navbar } from "./navbar"
+import { sidebar } from "./sidebar"
 
 
 application.register("hello", HelloController)
-navbar();
+sidebar();
