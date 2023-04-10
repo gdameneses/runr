@@ -1,10 +1,9 @@
 <h1> Runr </h1>
 A management tool made by a manager, to managers. I personally dislike using pen and paper in 2023, using it in a daily basis and having trouble to see information that I should be seeing quickly with a decent user interface, made me come up with Runr. You will be able to manage your shifts ideally using a tablet for maximum  mobility, write down your to-dos and remembers and quickly understand what will be happening within the next hours of your shift. 
 <h3>Dashboard</h3>
-That's how the dashboard looks so far, still items to be added but this is a really good idea of how I want it to look once it's finished.
-<h2>
-<img src="https://i.imgur.com/NDWeLYY.png">
+<video src="https://user-images.githubusercontent.com/86897214/230901863-87f16d14-07e0-4c17-9b81-bdd8fdb36e57.mp4">
 A fancy looking dashboard carrying information of all the other parts of the app, all in a nice visual to make it all visual appealing and bringin information in an easier way to help the user plan around their day.
+
 <h3>Floorplan</h3>
 A page for the user to allocate workers to specific positions that they will be able to define on restaurant setup
 <h3>Shift Report</h3>
