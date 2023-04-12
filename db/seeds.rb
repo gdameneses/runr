@@ -12,6 +12,7 @@ r.name = 'Restaurante'
 puts "Creating #{r.name} for #{User.first.email}"
 r.user = User.first
 r.save
+puts r
 
 puts '========================================'
 

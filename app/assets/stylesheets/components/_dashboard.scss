@@ -1,20 +1,37 @@
-.card {
-  padding: 0;
-}
-
 .dashboard {
   height: 100vh;
+  flex-grow: 1;
+  background-color: $grey;
+  padding: 0.5rem;
+  padding-left: 5.5rem;
+  color: $light-gray;
 }
 
 .dashboard-card {
-  margin: 1rem 0.5rem 1rem 0.5rem;
-  // padding: 1rem;
-  border: solid red;
+  margin: 0.5rem;
+  padding: 1rem;
+  background-color: #e1e1ff12;
+  border-radius: 16px;
+  flex-grow: 1;
 
   .card-header{
     display: flex;
     justify-content: space-between;
     padding-bottom: 2rem;
-    border-bottom: solid grey 1px;
+    background-color: initial;
   }
+  .card-header h3 {
+    /*aaa*/
+    font-weight: 600;
+    padding: 0.5rem;
+  }
+
+  .card-header-button {
+    height: 32px;
+    font-size: 12px;
+  }
+}
+
+.tasklist {
+  height: -webkit-fill-available;
 }

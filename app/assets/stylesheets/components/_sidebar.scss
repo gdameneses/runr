@@ -1,0 +1,140 @@
+.sidebar {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  color: rgb(21, 21, 30);
+  display: flex;
+  width: 100%;
+  height: 64px;
+  background-color: #24202a;
+  padding: 0;
+  flex-direction: column;
+  top: 0;
+  z-index: 1;
+  transition: 0.3s;
+  .logo {
+    padding: 1.5rem;
+    color: $white;
+    width: 100%;
+    justify-content: space-between;
+  }
+  h4 {
+      margin: 0;
+      font-weight: 700;
+      font-size: larger;
+      transition: 0.3s;
+    }
+  .sidebar-navigation {
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+    transition: 0.3s;
+  }
+  a {
+    z-index: 1;
+    color: #f4f4f428;
+    margin: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #f4f4f47c;
+  }
+  .navigation-active {
+    flex-grow: 1;
+    top: 0vh;
+  }
+}
+
+.sidebar-expanded {
+  background-color: $gray;
+  height: 544px;
+  box-shadow: 0 0px 40px 16px #331a6c8a;
+  h4 {
+    text-shadow:
+      0 0 40px $purple,
+      0 0 40px $purple,
+      0 0 50px $purple,
+      0 0 50px $purple,
+      0 0 50px $purple,
+      0 0 60px $purple,
+      0 0 70px $purple,
+      0 0 100px $purple;
+  }
+  a {
+    color: #e1ddf371;
+  }
+}
+
+
+
+
+
+
+@media (min-width: 992px) {
+  .sidebar {
+    position: absolute;
+    width: 80px;
+    height: 100vh;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .nav-menu-text {
+    display: none;
+    z-index: -1;
+    transition-delay: 1s;
+    transition: 0.6s;
+  }
+
+  .sidebar a {
+    height: 64px;
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .sidebar a:hover {
+    background-color: rgba(189, 186, 186, 0.1);
+  }
+
+  .sidebar-item {
+    margin: 0.5rem;
+  }
+
+  .sidebar .logo {
+    height: 30vh;
+    margin: 1rem auto;
+    width: fit-content;
+  }
+
+  .sidebar h4 {
+    font-size: 40px;
+  }
+
+  .sidebar-expanded {
+    width: 256px;
+    color: $light-gray;
+
+    .nav-menu-text {
+      z-index: 1;
+      flex-grow: 1;
+      display: initial;
+    }
+
+    h4 {
+      font-size: 80px;
+    }
+  }
+  .sidebar-navigation .active {
+    background-color: $grey;
+  }
+}

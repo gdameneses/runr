@@ -1,49 +1,48 @@
 <% if @restaurant %>
-  <section class="dashboard col-12 justify-between pt-2">
-    <h2>Let's run!</h2>
-    <div class="wrapper d-flex h-100">
-      <div class="wrapper col-7">
-        <div class="dashboard-card card">
-          <div class="card-header">
-            <h3>Floorplan</h3>
-            <%= link_to 'Create new', '#', class: "btn btn-primary rounded-pill" %>
+  <div class="container-fluid d-flex flex-row p-0">
+    <%= render 'shared/sidebar' %>
+    <section class="dashboard justify-between">
+      <div class="wrapper d-flex h-100">
+        <div class="wrapper col-7 d-flex flex-column">
+          <div class="dashboard-card card floorplan">
+            <div class="card-header">
+              <h3>Floorplan</h3>
+              <%= link_to 'Create new', '#', class: "btn btn-primary rounded-pill  card-header-button" %>
+            </div>
+          </div>
+          <div class="card dashboard-card report">
+            <div class="card-header d-flex">
+              <h3 class="card-title">Shift Report</h4>
+              <%= link_to "Manage report", restaurant_report_path(@restaurant), class: "btn btn-primary rounded-pill card-header-button" %>
+            </div>
+            <div class="card-body">
+            </div>
           </div>
         </div>
-        <div class="card dashboard-card report">
-          <div class="card-header d-flex">
-            <h4 class="card-title">Shift Report</h4>
-            <%= link_to "Manage report", restaurant_report_path(@restaurant), class: "btn btn-primary rounded-pill" %>
-          </div>
-          <div class="card-body">
-          </div>
-        </div>
-      </div>
-      <div class="wrapper col-5">
-        <div class="dashboard-card panel h-100" id="notes">
-          <div class="card-header text-center justify-content-center">
-            <h3 class="card-title" anchor="notes">
-              Notes
-            </h3>
-          </div>
-          <div class="card-body d-flex flex-column p-2">
-            <% @restaurant.notes.each do |note| %>
-              <div class="wrapper col-12 d-flex m-2">
-                <div class="card card-note col-11">
-                  <h5 class=""><%= note.content %></h5>
+        <div class="wrapper col-5 ">
+          <div class="dashboard-card card tasklist" id="notes">
+            <div class="card-header text-center justify-content-between">
+              <h3 class="card-title" anchor="notes">
+                Notes
+              </h3>
+              <button type="button" class="btn btn-primary rounded-pill  card-header-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                +Add note
+              </button>
+            </div>
+            <div class="card-body d-flex flex-column p-2">
+              <% @restaurant.notes.each do |note| %>
+                <div class="wrapper col-12 d-flex m-2">
+                  <div class="card card-note col-11">
+                    <h5 class=""><%= note.content %></h5>
+                  </div>
+                    <%= link_to 'X',
+                        note_path(note),
+                        class: 'btn btn-outline-danger col-1 d-flex align-items-center justify-content-center',
+                        method: :delete
+                      %>
                 </div>
-                  <%= link_to 'X',
-                      note_path(note),
-                      class: 'btn btn-outline-danger col-1 d-flex align-items-center justify-content-center',
-                      method: :delete
-                    %>
-              </div>
-            <% end %>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              +Add note
-            </button>
-          </div>
+              <% end %>
+            </div>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <%= render 'notes/new' %>
@@ -51,10 +50,11 @@
             </div>
 
 
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 <% else %>
   <div class="started-item active d-flex align-items-center mb-3 mt-3 ">
     <div class="rounded-circle bg-dark text-light p-3 m-1">01</div>
