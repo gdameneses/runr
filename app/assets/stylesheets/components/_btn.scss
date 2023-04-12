@@ -1,0 +1,18 @@
+.btn-primary:hover {
+  background-color: $primary;
+  box-shadow:
+    0 0 2px #4F28A7,
+    inset 0px 0px 0px 1px $white ;
+}
+
+.btn-secondary {
+  color: $black;
+}
+
+.btn-secondary:hover {
+  background-color: $beige;
+  box-shadow:
+    0 0 4px $beige,
+    0 0 16px $beige,
+    inset 0px 0px 0px 2px $white ;
+}

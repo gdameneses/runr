@@ -3,26 +3,3 @@ body {
   background-color: $grey;
   color: $white;
 }
-
-
-.btn-primary:hover {
-  background-color: $primary;
-  box-shadow:
-    0 0 8px #4F28A7,
-    0 0 12px #4F28A7,
-    0 0 16px #4F28A7,
-    0 0 32px #4F28A7,
-    inset 0px 0px 0px 2px $white
-  ;
-}
-
-.btn-secondary {
-  color: $black;
-}
-.btn-secondary:hover {
-  background-color: $beige;
-  box-shadow:
-    0 0 4px $beige,
-    0 0 16px $beige,
-    inset 0px 0px 0px 2px $white ;
-}
