@@ -23,8 +23,16 @@
         <div class="col divisor"><h5>ID</h5></div>
         <div class="col col-4 divisor"><h5>Name</h5></div>
         <div class="col divisor"><h5>Break</h5></div>
-        <div class="col divisor" id="start"><h5>Start</h5></div>
-        <div class="col divisor" id="finish"><h5>Finish</h5></div>
+        <div class="col divisor d-flex justify-content-between" id="start">
+          <div class="header-arrow"></div>
+          <h5 class="header-item">Start</h5>
+          <div class="header-arrow">v</div>
+        </div>
+        <div class="col divisor d-flex justify-content-between" id="finish">
+          <div class="header-arrow"></div>
+          <h5 class="header-item">Finish</h5>
+          <div class="header-arrow"></div>
+        </div>
         <div class="col divisor"><h5>Missed</h5></div>
         <div class="col-2"><h5>Manage</h5></div>
       </div>
@@ -40,42 +48,61 @@
       </div>
     </div>
 <script>
+const table = document.querySelector('#report-table');
+const headerRow = table.firstElementChild;
+const columns = Array.from(headerRow.children);
 
-const sortTableFromHeader = () => {
-  const table = document.querySelector('#report-table');
-  const headerRow = table.firstElementChild;
-  const columns = Array.from(headerRow.children);
-  // console.log(`${column.innerText} at index ${i}. desc = ${desc}`);
-
-  columns.forEach(function (column, i) {
-    let desc = true;
-    column.addEventListener("click", function() {
-      sortGrid(i, desc);
-      desc = !desc;
-    });
-  });
-}
-
-
-function sortGrid(index, desc) {
+const sortGrid = (index, desc) => {
   desc = desc;
-  console.log(index);
-  var container = document.querySelector('#shifts');
-  var items = Array.from(container.children);
-  var sortedItems = items.sort(function(a, b) {
+  const container = document.querySelector('#shifts');
+  const items = Array.from(container.children);
+  const sortedItems = items.sort(function(a, b) {
     var aVal = a.querySelectorAll('.cell')[index].innerHTML;
     var bVal = b.querySelectorAll('.cell')[index].innerHTML;
     if (desc){
-      return new Date('1970/01/01 ' + aVal) - new Date('1970/01/01 ' + bVal);
+      return new Date(aVal) - new Date(bVal);
     } else {
-      return new Date('1970/01/01 ' + bVal) - new Date('1970/01/01 ' + aVal);
+      return new Date(bVal) - new Date(aVal);
     }
   });
   container.innerHTML = '';
   sortedItems.forEach(function(item) {
     container.appendChild(item);
   });
+};
+
+const removeArrows = () => {
+  headerRow.children.start.children[2].innerText = '';
+  headerRow.children.finish.children[2].innerText = '';
 }
+
+const addArrow = (column, desc) => {
+  let arrow = column.children[2]
+  if (desc) {
+    arrow.innerText = 'v';
+  } else {
+    arrow.innerText = '^'
+  }
+};
+
+const sortTableFromHeader = () => {
+
+  // console.log(`${column.innerText} at index ${i}. desc = ${desc}`);
+  sortGrid(3, true);
+
+  columns.forEach(function (column, i) {
+    let desc = true;
+    if (i == 3 || i == 4) {
+      column.addEventListener("click", function() {
+        removeArrows();
+        addArrow(column, desc);
+        sortGrid(i, desc);
+        desc = !desc;
+      });
+    }
+  });
+};
+
 sortTableFromHeader();
 
 </script>
