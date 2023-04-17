@@ -1,4 +1,19 @@
 .modal-content {
-  background-color: #e1e1ff12;
+  background-color: #24202a;
   border-radius: 16px;
+  padding: 1rem;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.modal .form-control {
+  border: none;
+  background-color: $greyblue;
+  color: $white;
 }
