@@ -6,7 +6,7 @@
   <div class="cell col finishing-time"><%= shift.finish.strftime("%d/%b %H:%M") %></div>
   <div class="cell col"><input type="checkbox"></div>
   <div class="cell col-2 d-flex align-items-center justify-content-between">
-    <%= link_to 'Edit', edit_shift_path(shift), class: "btn btn-secondary col-8" %>
-    <%= link_to 'X', shift_path(shift), class: "btn btn-danger col-3", method: :delete %>
+    <%= link_to 'Edit', edit_shift_path(shift), class: "btn btn-outline-warning col-8" %>
+    <%= link_to 'X', shift_path(shift), class: "btn btn-outline-danger col-3", method: :delete %>
   </div>
 <% end %>

@@ -1,0 +1,38 @@
+.report-page {
+  padding: 0.5rem 0.5rem 0.5rem 5.5rem;
+  flex-grow: 1;
+}
+
+.page-title h2 {
+  font-weight: bold;
+}
+
+
+
+.report-table {
+  padding: 0 1rem;
+
+  .row:nth-child(odd) {
+    background-color: #24202A;
+    border-bottom: 1px solid rgba(189, 186, 186, 0.1);
+  }
+
+  .row:hover {
+    background-color: rgba(189, 186, 186, 0.1);
+  }
+
+  .row.header {
+    background-color: #24202A !important;
+  }
+  .header {
+    text-align: center;
+    padding: 0.5rem;
+  }
+  .divisor {
+    border-right: 1px solid grey;
+  }
+
+  .btn {
+    padding: 0 1rem;
+  }
+}
