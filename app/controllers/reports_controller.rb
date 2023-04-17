@@ -30,7 +30,8 @@ class ReportsController < ApplicationController
     @report.save
     authorize @report
     csv_to_shift(@report.file)
-    redirect_to restaurant_report_path(@restaurant)
+    redirect_back(fallback_location: root_path)
+
   end
 
   def destroy
