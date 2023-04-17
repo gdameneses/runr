@@ -18,42 +18,32 @@
     <% end %>
   </div>
 </div>
-    <div class="container-fluid report-table">
+    <div class="container-fluid report-table" id="report-table">
       <div class="header row text-center border p-1">
         <div class="col divisor"><h5>ID</h5></div>
         <div class="col col-4 divisor"><h5>Name</h5></div>
         <div class="col divisor"><h5>Break</h5></div>
-        <div class="col divisor" id="start"><h5>Start</h5></div>
-        <div class="col divisor" id="finish"><h5>Finish</h5></div>
+        <div class="col divisor d-flex justify-content-between" id="start">
+          <div class="header-arrow"></div>
+          <h5 class="header-item">Start</h5>
+          <div class="header-arrow">v</div>
+        </div>
+        <div class="col divisor d-flex justify-content-between" id="finish">
+          <div class="header-arrow"></div>
+          <h5 class="header-item">Finish</h5>
+          <div class="header-arrow"></div>
+        </div>
         <div class="col divisor"><h5>Missed</h5></div>
         <div class="col-2"><h5>Manage</h5></div>
       </div>
-
       <%= turbo_frame_tag 'new', class:"row border p-1 text-center justify-content-end" do %>
         <div class="col-2">
           <%= link_to '+ Add a shift', new_shift_path, class: "btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12", id:"open-form" %>
         </div>
       <% end %>
-    <div class="report-table p-0" id="shifts">
-      <% if @restaurant.report %>
-        <%= render partial: "shifts/shift", collection: @restaurant.report.shifts %>
+      <div class="report-table p-0" id="shifts">
+        <% if @restaurant.report %>
+          <%= render partial: "shifts/shift", collection: @restaurant.report.shifts %>
+        <% end %>
+      </div>
     </div>
-      <% end %>
-<!-- %= javascript_pack_tag "report_show" %-->
-
-<script>
-// table.firstElementChild.children[1].innerText
-const table = document.getElementById('shifts');
-const tableHeader = document.getElementsByClassName('header')[0];
-const rows = table.childNodes;
-rowsArray = [];
-const sortByStarting = (row) => {
-  rowsArray.push(row);
-  };
-rows.forEach(row => sortByStarting(row));
-
-
-
-
-
-</script>
