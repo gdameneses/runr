@@ -3,11 +3,11 @@ const table = () => {
   if (reportTable) {
     const headerRow = reportTable.firstElementChild;
     const columns = Array.from(headerRow.children);
+    const container = document.querySelector('#shifts');
+    const items = Array.from(container.children);
 
     const sortGrid = (index, desc) => {
-      desc = desc;
-      const container = document.querySelector('#shifts');
-      const items = Array.from(container.children);
+      // Creates sortedItems by sorting every cell on the table based on column.
       const sortedItems = items.sort(function (a, b) {
         var aVal = a.querySelectorAll('.cell')[index].innerHTML;
         var bVal = b.querySelectorAll('.cell')[index].innerHTML;
