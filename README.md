@@ -4,16 +4,21 @@ A management tool made by a manager, to managers. I personally dislike using pen
 <video src="https://user-images.githubusercontent.com/86897214/230901863-87f16d14-07e0-4c17-9b81-bdd8fdb36e57.mp4"></video>
 A fancy looking dashboard carrying information of all the other parts of the app, all in a nice visual to make it all visual appealing and bringin information in an easier way to help the user plan around their day.
 
+As per my last commits, this is how dashboard looks currently on development:
+<img src="https://i.imgur.com/HyTHQrt.png">
+
 <h3>Floorplan</h3>
 A page for the user to allocate workers to specific positions that they will be able to define on restaurant setup
 <h3>Shift Report</h3>
 In here the user can define who is working and the time that they will be there for. Made possible by hotwire, this page is fully responsive and feels so quick it's almost like it's alive!
-<img src="https://i.imgur.com/P5oR11s.png">
+<img src=https://i.imgur.com/LTxbhXw.png">
+
 
 Also can read a specific .csv file and translate it into the database into a editable model
 
 <h3>Tasklist</h3>
 Quickly create notes, mark them as done or simply discard the ones you don't need.
+<img src="https://i.imgur.com/H0V8Les.png">
 
 
 <h4>Tech stack</h4>
