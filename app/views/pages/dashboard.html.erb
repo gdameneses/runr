@@ -47,18 +47,17 @@
                   <h4>Finishing next...</h4>
                 </div>
                 <div class="report-card-body d-flex flex-column justify-content-around flex-grow-1">
-                  <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
-                    <div class="item flex-grow-1">Nicolle Meneses</div>
-                    <div class="item">19:00</div>
+                  <% @restaurant.report.shifts.select do |shift| %>
+                    <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
+                    <div class="item flex-grow-1">
+                      <%= shift.worker.first_name %>
+                    </div>
+                    <div class="item">
+                      <%= shift.finish %>
+                    </div>
                   </div>
-                   <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
-                    <div class="item flex-grow-1">Nicolle Meneses</div>
-                    <div class="item">19:00</div>
-                  </div>
-                  <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
-                    <div class="item flex-grow-1">Nicolle Meneses</div>
-                    <div class="item">19:00</div>
-                  </div>
+                      <% end %>
+
                 </div>
                 <div class="report-card-footer d-flex flex-column justify-content-around">
                   <div class="text-center">
