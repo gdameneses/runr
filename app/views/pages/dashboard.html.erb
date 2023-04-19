@@ -22,23 +22,18 @@
                   <h4>Starting next...</h4>
                 </div>
                 <div class="report-card-body d-flex flex-column justify-content-around flex-grow-1">
-                  <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
-                    <div class="item flex-grow-1">Nicolle Meneses</div>
-                    <div class="item">19:00</div>
-                  </div>
-                   <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
-                    <div class="item flex-grow-1">Nicolle Meneses</div>
-                    <div class="item">19:00</div>
-                  </div>
-                  <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
-                    <div class="item flex-grow-1">Nicolle Meneses</div>
-                    <div class="item">19:00</div>
-                  </div>
-                </div>
-                <div class="report-card-footer d-flex flex-column justify-content-around">
-                  <div class="text-center">
-                    <div class="item">See more...</div>
-                  </div>
+                  <% start_array = @restaurant.report.shifts.where('start > ?', Time.new(2023, 04, 19, 8)) %>
+                  <% start_array = start_array.sort_by(&:start) %>
+                  <% start_array[0..2].each do |shift| %>
+                    <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
+                      <div class="item flex-grow-1">
+                        <%= "#{shift.worker.first_name} #{shift.worker.last_name}" %>
+                      </div>
+                      <div class="item">
+                        <%= shift.start.strftime("%k:%M") %>
+                      </div>
+                    </div>
+                  <% end %>
                 </div>
 
               </div>
@@ -47,13 +42,15 @@
                   <h4>Finishing next...</h4>
                 </div>
                 <div class="report-card-body d-flex flex-column justify-content-around flex-grow-1">
-                  <% @restaurant.report.shifts.select do |shift| %>
+                <% finish_array = @restaurant.report.shifts.where('finish > ?', Time.new(2023, 04, 19, 8)) %>
+                <% finish_array = finish_array.sort_by(&:finish) %>
+                  <% finish_array[0..2].each do |shift| %>
                     <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
                     <div class="item flex-grow-1">
-                      <%= shift.worker.first_name %>
+                      <%= "#{shift.worker.first_name} #{shift.worker.last_name}" %>
                     </div>
                     <div class="item">
-                      <%= shift.finish %>
+                      <%= shift.finish.strftime("%k:%M") %>
                     </div>
                   </div>
                       <% end %>
