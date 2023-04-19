@@ -20,6 +20,7 @@
     justify-content: space-between;
     padding-bottom: 2rem;
     background-color: initial;
+    border: none;
   }
   .card-header h3 {
     /*aaa*/
@@ -37,6 +38,16 @@
   height: -webkit-fill-available;
 }
 
+#report-card .card-item {
+  background-color: rgba(10, 10, 10, 0.1);
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.report-card-item {
+  background-color: rgba(132, 132, 132, 0.1);
+  border-radius: 8px;
+}
 
 .card-note {
   width: -webkit-fill-available;
