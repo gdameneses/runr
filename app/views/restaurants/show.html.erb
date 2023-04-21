@@ -7,27 +7,27 @@
         <h6 class="page-title">Dashboard/Settings</h6>
       </div>
       <div class="card-body">
-      <%= link_to restaurant_stations_path(@restaurant), class: "btn settings-card dashboard-card " do  %>
-        <div class="settings-text" style="color: white; text-decoration: none;">
-          Layout
+        <%= link_to restaurant_stations_path(@restaurant), class: "btn settings-card dashboard-card " do  %>
+          <div class="settings-text" style="color: white; text-decoration: none;">
+            Layout
+          </div>
+        <% end %>
+        <%= link_to restaurant_workers_path(@restaurant), class: "btn settings-card dashboard-card " do  %>
+          <div class="settings-text" style="color: white; text-decoration: none;">
+            Team
+          </div>
+        <% end %>
+        <%= link_to restaurant_floorplans_path(@restaurant), class: "btn settings-card dashboard-card " do  %>
+          <div class="settings-text" style="color: white; text-decoration: none;">
+            Floorplan
+          </div>
+        <% end %>
+        <%= link_to restaurant_path(@restaurant), method: :delete, class: "btn settings-card dashboard-card " do  %>
+          <div class="settings-text" style="color: white; text-decoration: none;">
+            Delete restaurant
+          </div>
+        <% end %>
         </div>
-      <% end %>
-      <%= link_to restaurant_workers_path(@restaurant), class: "btn settings-card dashboard-card " do  %>
-        <div class="settings-text" style="color: white; text-decoration: none;">
-          Team
-        </div>
-      <% end %>
-      <%= link_to restaurant_floorplans_path(@restaurant), class: "btn settings-card dashboard-card " do  %>
-        <div class="settings-text" style="color: white; text-decoration: none;">
-          Floorplan
-        </div>
-      <% end %>
-      <%= link_to restaurant_path(@restaurant), method: :delete, class: "btn settings-card dashboard-card " do  %>
-        <div class="settings-text" style="color: white; text-decoration: none;">
-          Delete restaurant
-        </div>
-      <% end %>
-      </div>
     </div>
   </section>
 </div>

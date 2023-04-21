@@ -2,7 +2,7 @@
   <h2>Shift Report</h2>
     <div class="buttons">
       <% if @restaurant.report %>
-        <%= link_to 'Delete report', report_path(@restaurant.report), class: "btn btn-danger rounded-1 m-1", method: :delete %>
+        <%= link_to 'Delete report', report_path(@restaurant.report), class: "btn btn-danger rounded-1 m-1 rounded-pill", method: :delete %>
       <% end %>
       <button type="button" class="btn btn-primary rounded-pill m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
         + Upload report
@@ -33,11 +33,7 @@
           <%= link_to '+ Add a shift', new_shift_path, class: "btn btn-success p-4 pt-0 pb-0 mt-0 mb-0 col-12", id:"open-form" %>
         </div>
 
-    
+
       <% end %>
     <div class="report-table p-0" id="shifts">
-      <%# if @restaurant.report %>
-        <!--<%= render partial: "shifts/shift", collection: @shifts %>-->
     </div>
-      <%# end %>
-<!--%= javascript_pack_tag "reports" %>

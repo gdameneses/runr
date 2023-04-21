@@ -5,7 +5,7 @@
       <h2>Shift Report</h2>
         <div class="buttons">
           <% if @restaurant.report %>
-            <%= link_to 'Clear all', report_path(@restaurant.report), class: "btn btn-outline-danger rounded-1 m-1", method: :delete %>
+            <%= link_to 'Clear all', report_path(@restaurant.report), class: "btn btn-outline-danger rounded-pill m-1", method: :delete %>
           <% end %>
           <button type="button" class="btn btn-primary rounded-pill m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
             + Upload .csv
@@ -39,7 +39,7 @@
       </div>
       <%= turbo_frame_tag 'new', class:"row p-1 text-center justify-content-end" do %>
         <div class="col-2">
-          <%= link_to '+ Add a shift', new_shift_path, class: "btn btn-success p-4 pt-0 pb-0 mt-0 mb-0", id:"open-form" %>
+          <%= link_to '+ Add a shift', new_shift_path, class: "btn btn-outline-success p-4 pt-1 pb-1 mt-0 mb-0 rounded-pill", id:"open-form" %>
         </div>
       <% end %>
       <div class="report-table p-0" id="shifts">

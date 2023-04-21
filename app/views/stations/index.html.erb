@@ -1,5 +1,31 @@
-<h2><%= @restaurant.name %></h2>
-<h3><%= link_to '+ New station', new_restaurant_station_path(@restaurant), class: 'btn btn-outline-primary' %></h3>
-<% @stations.each do |station| %>
-  <h4><%= station.name %><span> - <%= link_to 'Edit', edit_station_path(station) %> - <%= link_to '🗑️', station_path(station), method: :delete %></span></h4>
-<% end %>
+<div class="container-fluid d-flex flex-row p-0">
+  <%= render "shared/sidebar"%>
+  <section class="dashboard justify-between d-flex flex-column">
+    <div class="dashboard-card flex-grow-1">
+      <div class="dashboard-header d-flex justify-content-between">
+        <div>
+        <h2 class="page-title"><%= @restaurant.name %></h2>
+        <h4>Layout</h4>
+        </div>
+        <h6 class="page-title">Dashboard/Settings/Layout</h6>
+      </div>
+      <div class="card-body p-1">
+      <div class="d-flex justify-content-end">
+        <%= link_to '+ New station', new_restaurant_station_path(@restaurant),class:"btn btn-primary rounded-pill m-2" , style: "color: white; text-decoration: none" %>
+      </div>
+        <% @stations.each do |station| %>
+          <div class="dashboard-card d-flex justify-content-between text-center align-items-center p-2 flex-grow-1">
+            <h4 class="m-0">
+              <%= station.name %>
+            </h4>
+            <div class="col-3 d-flex justify-content-end">
+              <%= link_to 'Edit', edit_station_path(station), class: "btn btn-outline-warning rounded-pill col-4 m-1 mt-0 mb-0" %>
+              <%= link_to 'X', station_path(station), class: "btn btn-outline-danger col-3 rounded-pill m-1 mt-0 mb-0", method: :delete %>
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>
