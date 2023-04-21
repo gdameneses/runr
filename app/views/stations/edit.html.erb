@@ -1,5 +1,21 @@
-<h2><%= @restaurant.name %></h2>
-<%= simple_form_for @station do |f| %>
-  <%= f.input :name %>
-  <%= f.submit %>
-<% end %>
+<div class="container-fluid d-flex flex-row p-0">
+  <%= render "shared/sidebar"%>
+  <section class="dashboard justify-between d-flex flex-column">
+    <div class="dashboard-card flex-grow-1">
+      <div class="dashboard-header d-flex justify-content-between">
+        <div>
+        <h2 class="page-title"><%= @restaurant.name %></h2>
+        <h4>Layout</h4>
+        </div>
+        <h6 class="page-title">Dashboard/Settings/Layout/Edit</h6>
+      </div>
+      <div class="card-body p-1">
+        <%= simple_form_for @station do |f| %>
+          <%= f.input :name %>
+          <%= f.submit class: "btn btn-outline-success rounded-pill" %>
+        <% end %>
+
+      </div>
+    </div>
+  </section>
+</div>

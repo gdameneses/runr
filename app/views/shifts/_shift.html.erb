@@ -4,7 +4,7 @@
   <div class="cell col divisor starting-time"><%= shift.start.strftime("%d/%b %H:%M") %></div>
   <div class="cell col finishing-time"><%= shift.finish.strftime("%d/%b %H:%M") %></div>
   <div class="cell col-2 d-flex align-items-center justify-content-center">
-    <%= link_to 'Edit', edit_shift_path(shift), class: "btn btn-outline-warning rounded-pill col-4 m-1 mt-0 mb-0" %>
-    <%= link_to 'X', shift_path(shift), class: "btn btn-outline-danger rounded-pill col-3 m-1", method: :delete %>
+    <%= link_to 'Edit', edit_shift_path(shift), class: "btn btn-table btn-outline-warning rounded-pill m-1 mt-0 mb-0" %>
+    <%= link_to 'X', shift_path(shift), class: "btn btn-table btn-outline-danger rounded-pill m-1", method: :delete %>
   </div>
 <% end %>

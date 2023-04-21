@@ -19,9 +19,9 @@
               <%= worker.first_name %> <%= worker.last_name %>
             </h4>
             <div class="col-3 d-flex justify-content-end">
-              <%= link_to 'Stations', worker_path(worker), class: "btn btn-outline-secondary rounded-pill m-1 mt-0 mb-0", style: "padding: 0.25rem 2rem" %>
-              <%= link_to 'Edit', edit_worker_path(worker), class: "btn btn-outline-warning rounded-pill m-1 mt-0 mb-0", style: "padding: 0.25rem 2rem" %>
-              <%= link_to 'X', worker_path(worker), class: "btn btn-outline-danger rounded-pill m-1 mt-0 mb-0", style: "padding: 0.25rem 2rem", method: :delete %>
+              <%= link_to 'Stations', worker_path(worker), class: "btn btn-table btn-outline-secondary rounded-pill m-1 mt-0 mb-0" %>
+              <%= link_to 'Edit', edit_worker_path(worker), class: "btn btn-table btn-outline-warning rounded-pill m-1 mt-0 mb-0" %>
+              <%= link_to 'X', worker_path(worker), class: "btn btn-table btn-outline-danger rounded-pill m-1 mt-0 mb-0", method: :delete %>
             </div>
           </div>
         <% end %>

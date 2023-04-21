@@ -1,9 +1,12 @@
 <div class="container-fluid d-flex flex-row p-0">
-    <%= render 'shared/sidebar' %>
-  <section class="report-page">
-    <div class="page-title d-flex justify-content-between mb-4 p-2">
-      <h2>Shift Report</h2>
-        <div class="buttons">
+  <%= render 'shared/sidebar' %>
+  <section class="report-page dashboard justify-between d-flex flex-column">
+    <div class="dashboard-card flex-grow-1">
+      <div class="dashboard-header d-flex justify-content-between">
+        <h2 class="page-title">Shift Report</h2>
+      </div>
+      <div class="card-body p-1">
+        <div class="d-flex justify-content-end">
           <% if @restaurant.report %>
             <%= link_to 'Clear all', report_path(@restaurant.report), class: "btn btn-outline-danger rounded-pill m-1", method: :delete %>
           <% end %>
@@ -11,42 +14,44 @@
             + Upload .csv
           </button>
         </div>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <% if @restaurant.report %>
-          <%= render 'new_existent' %>
-        <% else %>
-          <%= render 'new' %>
-        <% end %>
-      </div>
-    </div>
-    <div class="container-fluid report-table" id="report-table">
-      <div class="header row">
-        <div class="col divisor"><h5>ID</h5></div>
-        <div class="col col-4 divisor"><h5>Name</h5></div>
-        <div class="col divisor d-flex justify-content-between" id="start">
-          <div class="header-arrow"></div>
-          <h5 class="header-item">Start</h5>
-          <div class="header-arrow">v</div>
+        <div class="container-fluid report-table" id="report-table">
+          <div class="header row">
+            <div class="col divisor"><h5>ID</h5></div>
+            <div class="col col-4 divisor"><h5>Name</h5></div>
+            <div class="col divisor d-flex justify-content-between" id="start">
+              <div class="header-arrow"></div>
+              <h5 class="header-item">Start</h5>
+              <div class="header-arrow">v</div>
+            </div>
+            <div class="col divisor d-flex justify-content-between" id="finish">
+              <div class="header-arrow"></div>
+              <h5 class="header-item">Finish</h5>
+              <div class="header-arrow"></div>
+            </div>
+            <div class="col-2"><h5>Manage</h5></div>
+          </div>
+          <%= turbo_frame_tag 'new', class:"row p-1 text-center justify-content-end" do %>
+            <div class="col-2">
+              <%= link_to '+ Add a shift', new_shift_path, class: "btn btn-outline-success p-4 pt-1 pb-1 mt-0 mb-0 rounded-pill", id:"open-form" %>
+            </div>
+          <% end %>
+          <div class="report-table p-0" id="shifts">
+            <% if @restaurant.report %>
+              <%= render partial: "shifts/shift", collection: @restaurant.report.shifts %>
+            <% end %>
+          </div>
         </div>
-        <div class="col divisor d-flex justify-content-between" id="finish">
-          <div class="header-arrow"></div>
-          <h5 class="header-item">Finish</h5>
-          <div class="header-arrow"></div>
-        </div>
-        <div class="col-2"><h5>Manage</h5></div>
-      </div>
-      <%= turbo_frame_tag 'new', class:"row p-1 text-center justify-content-end" do %>
-        <div class="col-2">
-          <%= link_to '+ Add a shift', new_shift_path, class: "btn btn-outline-success p-4 pt-1 pb-1 mt-0 mb-0 rounded-pill", id:"open-form" %>
-        </div>
-      <% end %>
-      <div class="report-table p-0" id="shifts">
-        <% if @restaurant.report %>
-          <%= render partial: "shifts/shift", collection: @restaurant.report.shifts %>
-        <% end %>
       </div>
     </div>
   </section>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <% if @restaurant.report %>
+      <%= render 'new_existent' %>
+    <% else %>
+      <%= render 'new' %>
+    <% end %>
+  </div>
 </div>

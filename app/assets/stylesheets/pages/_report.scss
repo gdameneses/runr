@@ -10,11 +10,10 @@
 
 
 .report-table {
-  padding: 0 1rem;
+  background-color: #211e27;
 
   .row:nth-child(odd) {
-    background-color: #24202A;
-    border-bottom: 1px solid rgba(189, 186, 186, 0.1);
+    background-color: #2b2830;
   }
 
   .row:hover {
@@ -22,7 +21,7 @@
   }
 
   .row.header {
-    background-color: #24202A !important;
+    background-color: #2b2830 !important;
   }
   .header {
     text-align: center;
