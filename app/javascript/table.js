@@ -1,4 +1,3 @@
-const table = () => {
   const reportTable = document.querySelector('#report-table');
   if (reportTable) {
     const headerRow = reportTable.firstElementChild;
@@ -43,7 +42,7 @@ const table = () => {
 
       columns.forEach(function (column, i) {
         let desc = true;
-        if (i == 3 || i == 4) {
+        if (i == 2 || i == 3) {
           column.addEventListener("click", function () {
             removeArrows();
             addArrow(column, desc);
@@ -56,5 +55,3 @@ const table = () => {
 
   sortTableFromHeader();
   }
-};
-export { table }

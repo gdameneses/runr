@@ -1,4 +1,3 @@
-const sidebar = () => {
   // Sets variables based on the unique class name I given them
   const collapseButton = document.querySelector(".btn-collapse");
   const sidebar = document.querySelector(".sidebar");
@@ -20,6 +19,3 @@ const sidebar = () => {
     sidebar.addEventListener("click", expandSidebar);
     sidebar.addEventListener("mouseleave", retractNavbar);
   }
-}
-
-export { sidebar };

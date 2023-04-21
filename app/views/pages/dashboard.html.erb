@@ -21,44 +21,24 @@
                 <div class="report-card-header text-center ">
                   <h4>Starting next...</h4>
                 </div>
-                <div class="report-card-body d-flex flex-column justify-content-around flex-grow-1">
-                  <% start_array = @restaurant.report.shifts.where('start > ?', Time.new(2023, 04, 19, 8)) %>
-                  <% start_array = start_array.sort_by(&:start) %>
-                  <% start_array[0..2].each do |shift| %>
-                    <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
-                      <div class="item flex-grow-1">
-                        <%= "#{shift.worker.first_name} #{shift.worker.last_name}" %>
-                      </div>
-                      <div class="item">
-                        <%= shift.start.strftime("%k:%M") %>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
+                <%= render 'shared/report_card_starting' %>
+                <div class="report-card-footer d-flex flex-column justify-content-around">
+                  <div class="text-center">
+                    <%= link_to "See more..", restaurant_report_path(@restaurant), class: "btn-card-more"%>
 
+                  </div>
+                </div>
               </div>
+
               <div class="card-item report-card col-10 col-mb-5 col-lg-5 m-2 p-2 pt-4 d-flex flex-row flex-md-column flex-lg-column">
                 <div class="report-card-header text-center ">
                   <h4>Finishing next...</h4>
                 </div>
-                <div class="report-card-body d-flex flex-column justify-content-around flex-grow-1">
-                <% finish_array = @restaurant.report.shifts.where('finish > ?', Time.new(2023, 04, 19, 8)) %>
-                <% finish_array = finish_array.sort_by(&:finish) %>
-                  <% finish_array[0..2].each do |shift| %>
-                    <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
-                    <div class="item flex-grow-1">
-                      <%= "#{shift.worker.first_name} #{shift.worker.last_name}" %>
-                    </div>
-                    <div class="item">
-                      <%= shift.finish.strftime("%k:%M") %>
-                    </div>
-                  </div>
-                      <% end %>
-
-                </div>
+                <%= render 'shared/report_card_finishing' %>
                 <div class="report-card-footer d-flex flex-column justify-content-around">
                   <div class="text-center">
-                    <div class="item">See more...</div>
+                  <%= link_to "See more..", restaurant_report_path(@restaurant), class: "btn-card-more"%>
+
                   </div>
                 </div>
 

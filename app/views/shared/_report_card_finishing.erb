@@ -1,0 +1,23 @@
+<div class="report-card-body d-flex flex-column justify-content-around flex-grow-1">
+  <% if @restaurant.report %>
+    <% shifts_array = @restaurant.report.shifts.where('finish > ?', Time.new(2023, 02, 06, 14)) %>
+    <% shifts_array = shifts_array.sort_by(&:finish) %>
+    <% shifts_array[0..3].each do |shift| %>
+      <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
+        <div class="item flex-grow-1">
+          <%= "#{shift.worker.first_name} #{shift.worker.last_name}" %>
+        </div>
+        <div class="item">
+          <%= shift.finish.strftime("%k:%M") %>
+        </div>
+      </div>
+    <% end %>
+    <% else %>
+      <div class="report-card-item  col-12 p-2 pt-4 pb-4 d-flex justify-content-between ">
+        <div class="item flex-grow-1">
+          You haven't scheduled anyone yet...
+
+        </div>
+      </div>
+  <% end %>
+</div>
