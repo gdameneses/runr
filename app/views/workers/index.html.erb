@@ -1,6 +1,31 @@
-<h2><%= @restaurant.name %></h2>
-<% @workers.each do |worker| %>
-  <h4><%= worker.first_name %> <%= worker.last_name %> - <%= link_to 'Edit', edit_worker_path(worker) %> - <%= link_to '🗑️', worker_path(worker), method: :delete %> - <%= link_to 'Stations', worker_path(worker) %></h4>
-<% end %>
-
-<%= link_to '+ Add Worker', new_restaurant_worker_path(@restaurant), class: 'btn btn-outline-primary' %>
+<div class="container-fluid d-flex flex-row p-0">
+  <%= render "shared/sidebar"%>
+  <section class="dashboard justify-between d-flex flex-column">
+    <div class="dashboard-card flex-grow-1">
+      <div class="dashboard-header d-flex justify-content-between">
+        <div>
+        <h2 class="page-title"><%= @restaurant.name %></h2>
+        <h4>Workers</h4>
+        </div>
+        <h6 class="page-title">Dashboard/Settings/Workers</h6>
+      </div>
+      <div class="card-body p-1">
+      <div class="d-flex justify-content-end">
+        <%= link_to '+ New worker', new_restaurant_worker_path(@restaurant),class:"btn btn-primary rounded-pill m-2" , style: "color: white; text-decoration: none" %>
+      </div>
+        <% @workers.each do |worker| %>
+          <div class="dashboard-card d-flex justify-content-between text-center align-items-center p-2 flex-grow-1">
+            <h4 class="m-0">
+              <%= worker.first_name %> <%= worker.last_name %>
+            </h4>
+            <div class="col-3 d-flex justify-content-end">
+              <%= link_to 'Stations', worker_path(worker), class: "btn btn-outline-secondary rounded-pill m-1 mt-0 mb-0", style: "padding: 0.25rem 2rem" %>
+              <%= link_to 'Edit', edit_worker_path(worker), class: "btn btn-outline-warning rounded-pill m-1 mt-0 mb-0", style: "padding: 0.25rem 2rem" %>
+              <%= link_to 'X', worker_path(worker), class: "btn btn-outline-danger rounded-pill m-1 mt-0 mb-0", style: "padding: 0.25rem 2rem", method: :delete %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>
