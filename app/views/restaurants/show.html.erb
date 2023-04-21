@@ -1,6 +1,33 @@
-<h2><%= @restaurant.name %></h2>
-<%= link_to 'Manage Layout', restaurant_stations_path(@restaurant), class: 'btn btn-secondary' %>
-<%= link_to 'Manage workers', restaurant_workers_path(@restaurant), class: 'btn btn-secondary' %>
-<%= link_to 'Floorplan', restaurant_floorplans_path(@restaurant), class: 'btn btn-secondary' %>
-<%= link_to 'Shift Report', restaurant_reports_path(@restaurant), class: 'btn btn-secondary' %>
-<%= link_to 'Destroy', restaurant_path(@restaurant), class: 'btn btn-danger', method: :delete %>
+<div class="container-fluid d-flex flex-row p-0">
+  <%= render "shared/sidebar"%>
+  <section class="dashboard justify-between d-flex flex-column">
+    <div class="dashboard-card flex-grow-1">
+      <div class="dashboard-header d-flex justify-content-between">
+        <h2 class="page-title"><%= @restaurant.name %></h2>
+        <h6 class="page-title">Dashboard/Settings</h6>
+      </div>
+      <div class="card-body">
+      <%= link_to restaurant_stations_path(@restaurant), class: "btn settings-card dashboard-card " do  %>
+        <div class="settings-text" style="color: white; text-decoration: none;">
+          Layout
+        </div>
+      <% end %>
+      <%= link_to restaurant_workers_path(@restaurant), class: "btn settings-card dashboard-card " do  %>
+        <div class="settings-text" style="color: white; text-decoration: none;">
+          Team
+        </div>
+      <% end %>
+      <%= link_to restaurant_floorplans_path(@restaurant), class: "btn settings-card dashboard-card " do  %>
+        <div class="settings-text" style="color: white; text-decoration: none;">
+          Floorplan
+        </div>
+      <% end %>
+      <%= link_to restaurant_path(@restaurant), method: :delete, class: "btn settings-card dashboard-card " do  %>
+        <div class="settings-text" style="color: white; text-decoration: none;">
+          Delete restaurant
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </section>
+</div>
